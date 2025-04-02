@@ -65,3 +65,7 @@ function setLineTxt(editedTxt) {
     gMeme.lines[0].txt = editedTxt
 
 }
+
+function setLineColor(EditedColor){
+    gMeme.lines[0].color = EditedColor 
+}

@@ -44,18 +44,31 @@ function onChangeText(editedTxt) {
     renderMeme()
 }
 
+function onSetColorFill(EditedColor) {
+    //Model
+    setLineColor(EditedColor)
+
+    //DOM
+    renderMeme()
+}
+
 function drawTxt(imgIdx, pos/*(0=top,1= buttom 2 = middle)*/) {
-    
+
     const meme = getMeme()
     const memeTxt = meme.lines[0].txt
+    const memeFontSize = meme.lines[0].size
+    const memeFontColor = meme.lines[0].color
+
 
     gCtx.beginPath()
-    gCtx.font = "40px Arial";
-    gCtx.textAlign = "center";
-    gCtx.textBaseline = "middle";
-    gCtx.fillText(memeTxt, gElCanvas.width / 2, 40);
+    gCtx.font = `${memeFontSize}px Arial`
+    gCtx.fillStyle = memeFontColor
+    gCtx.textAlign = "center"
+    gCtx.textBaseline = "middle"
+    gCtx.fillText(memeTxt, gElCanvas.width / 2, 40)
 
 }
+
 
 
 
