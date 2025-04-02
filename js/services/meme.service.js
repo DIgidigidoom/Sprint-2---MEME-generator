@@ -32,13 +32,13 @@ var gMeme = {
             txt: 'Type Your Text Here',
             size: 30,
             color: 'white',
-            // pos : {
-            //     x,
-            //     y,
-            //     height,
-            //     width 
+            pos: {
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
 
-            // },
+            },
         },
     ]
 }
@@ -59,7 +59,14 @@ function resetMeme() {
             {
                 txt: 'Type Your Text Here',
                 size: 30,
-                color: 'white'
+                color: 'white',
+                pos: {
+                    x: 0,
+                    y: 0,
+                    width: 0,
+                    height: 0
+
+                },
             },
         ]
     }
@@ -97,32 +104,45 @@ function setLineSize(direction) {
 }
 
 function addLine() {
-    if(gMeme.lines.length > 2) return
+    if (gMeme.lines.length > 2) return
     const newLine = {
         txt: 'Type Your Text Here',
         size: 40,
-        color: getRandomColor()
+        color: getRandomColor(),
+        pos: {
+            x: 0,
+            y: 0,
+            width: 0,
+            height: 0
+
+        },
     }
-    
+    toggleLineIndex()
     gMeme.lines.push(newLine)
 }
 
-function setLineIndex() {
-    // console.log('line idx before', gMeme.selectedLineIdx)
-    // console.log('length', gMeme.lines.length)
-    if (gMeme.selectedLineIdx < gMeme.lines.length-1) {
+function toggleLineIndex(click) {
+   
+    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
         gMeme.selectedLineIdx += 1
-        // console.log('line idx After', gMeme.selectedLineIdx)
+
     } else {
-        // console.log('line idx After', gMeme.selectedLineIdx)
+
         gMeme.selectedLineIdx = 0
     }
+    
+}
+function setLineIndex(txtLineIndex){
+    gMeme.selectedLineIdx = txtLineIndex
 
 }
 function getLineIndex() {
     return gMeme.selectedLineIdx
 }
 
-function setPos(){
-
+function setPos(x, y, width, height, memeLineIdx) {
+    gMeme.lines[memeLineIdx].pos.x = x
+    gMeme.lines[memeLineIdx].pos.y = y
+    gMeme.lines[memeLineIdx].pos.width = width
+    gMeme.lines[memeLineIdx].pos.height = height
 }

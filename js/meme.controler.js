@@ -15,6 +15,7 @@ function onInitEditor() {
 function renderMeme(imgId = 1) {
     gImgId = imgId
     drawImageOnCanvas(gImgId)
+
 }
 
 function onClearCanvas() {
@@ -48,23 +49,19 @@ function drawTxt() {
         gCtx.textAlign = "center"
         gCtx.textBaseline = "middle"
         gCtx.fillText(memeLine.txt, gElCanvas.width / 2, placeLines(memeLineIdx))
-        memeLineIdx += 1
 
 
-        const x = gElCanvas.width / 2;
-        const y = placeLines(memeLineIdx);
+
+        const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
+        const y = placeLines(memeLineIdx) - memeLine.size / 2;
         const txtWidth = gCtx.measureText(memeLine.txt).width
         const txtHeight = memeLine.size
+        setPos(x, y, txtWidth, txtHeight, memeLineIdx)
 
-        console.log(x)
-        console.log(y)
-
-        console.log(txtWidth)
-        console.log(txtHeight)
-
+        memeLineIdx += 1
     })
 
-    
+
 
 }
 
@@ -73,15 +70,16 @@ function renderLineFocus() {
     // console.log(memes.lines)
     // console.log(memes.selectedLineIdx)
     // console.log(memes.lines[memes.selectedLineIdx])
-    const txtWidth = gCtx.measureText(memes.lines[memes.selectedLineIdx].txt).width
-    const txtHeight = memes.lines[memes.selectedLineIdx].size
+    const memeLineIdx = getLineIndex()
+    const txtWidth = gCtx.measureText(memes.lines[memeLineIdx].txt).width
+    const txtHeight = memes.lines[memeLineIdx].size
     gCtx.lineWidth = 2
     gCtx.strokeStyle = "grey"
-    const memeLineIdx = getLineIndex()
+    
 
     const padding = 10
     gCtx.strokeRect((gElCanvas.width / 2) - txtWidth / 2 - padding, placeLines(memeLineIdx) - txtHeight / 2 - padding, txtWidth + padding * 2, txtHeight + padding * 2);
-    
+
 }
 
 function placeLines(linePlacing) {
@@ -96,15 +94,22 @@ function placeLines(linePlacing) {
     }
 }
 
-function onToggleLinesFocus() {
-    
-    //model
-    setLineIndex()
+function onSelectTxt(ev) {
+    const { offsetX, offsetY } = ev
 
+    const memeLines = getMeme().lines
 
-    //DOM
+    const clickedTxtLineIndx = memeLines.findIndex(line =>
+        offsetX >= line.pos.x && offsetX <= (line.pos.x + line.pos.width) &&
+        offsetY >= line.pos.y && offsetY <= (line.pos.y + line.pos.height)
+    )
+    console.log(clickedTxtLineIndx)
+   
+    if (clickedTxtLineIndx >= 0) {
+        setLineIndex(clickedTxtLineIndx)
+    }
+
     renderMeme(gImgId)
-
 
 }
 
@@ -138,7 +143,7 @@ function onChangeFontSize(direction) {
 function onAddLine() {
     //Model
     addLine()
-    setLineIndex()
+
     //DOM 
     renderMeme(gImgId)
 }
@@ -170,6 +175,18 @@ function getEvPos(ev) {
         }
     }
     return pos
+}
+
+function onToggleLinesFocus() {
+
+    //model
+    toggleLineIndex()
+
+
+    //DOM
+    renderMeme(gImgId)
+
+
 }
 
 
