@@ -11,7 +11,7 @@
 
 <body onload="onInitGallery()">
 
-    <div class="main-container gallery-mode">
+    <div class="main-container">
         <div class="main-header">
             <div class="logo">LOGO</div>
             <nav class="main-nav">
@@ -21,10 +21,28 @@
 
             </nav>
         </div>
-        <div class="gallery-container">
-
+        <!-- <div class="gallery-container"></div> -->
+        <div class="editor-container">
+            <div class="canvas-container">
+                <canvas width="400" height="400">
+                </canvas>
+            </div>
+            <div class="paint-options">
+                <input type="color" onchange="onSetColor(this.value)">
+                <select name="brush-size" id="brush-size" onchange="onSetSize(this.value)">
+                    <option value="brush-xs">1</option>
+                    <option value="brush-s">2</option>
+                    <option value="brush-m" selected>5</option>
+                    <option value="brush-l">10</option>
+                    <option value="brush-xl">20</option>
+                </select>
+                <select name="brush-shape" id="brush-shape" onchange="onSetShape(this.value)">
+                    <option value="square" selected>Square</option>
+                    <option value="circle">circle</option>
+                </select>
+                <button class="clr-btn" onclick="onClearCanvas()">Clear</button>
+            </div>
         </div>
-        <!-- <div class="editor-container"></div> -->
 
     </div>
 
