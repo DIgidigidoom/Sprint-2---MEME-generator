@@ -56,3 +56,10 @@ function drawTxt(imgIdx, pos/*(0=top,1= buttom 2 = middle)*/) {
     gCtx.fillText(memeTxt, gElCanvas.width / 2, 40);
 
 }
+
+
+
+function onDownloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
