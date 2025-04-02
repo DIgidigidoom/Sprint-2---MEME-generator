@@ -29,7 +29,7 @@
             <div class="paint-options">
                 <input class="txt-input" type="text" value="Type Your Text Here" oninput="onChangeText(this.value)">
                 <!-- <input type="color" onchange="onSetColorStroke(this.value)"> -->
-                <input type="color" onchange="onSetColorFill(this.value)">
+                <input type="color" value="#FFFFFF" onchange="onSetColorFill(this.value)">
                 <button class="btn font-size-btn" onclick="onChangeFontSize(1)">+</button>
                 <button class="btn font-size-btn" onclick="onChangeFontSize(-1)">-</button>
                 <button class="btn font-size-btn" onclick="onAddLine()">ADD</button>
@@ -57,6 +57,8 @@
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
+    <script src="js/services/utils.service.js"></script>
+
 </body>
 
 </html>

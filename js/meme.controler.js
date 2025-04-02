@@ -2,7 +2,7 @@
 var gElCanvas
 var gCtx
 var gElImage
-var imgId = 1
+var gImgId = 1
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -12,8 +12,9 @@ function onInitEditor() {
     renderMeme()
 }
 //////////////////////////////// Canvas //////////////////////////////////////////
-function renderMeme(imgId) {
-    drawImageOnCanvas(imgId)
+function renderMeme(imgId = 1) {
+    gImgId = imgId
+    drawImageOnCanvas(gImgId)
 }
 
 function onClearCanvas() {
@@ -21,9 +22,9 @@ function onClearCanvas() {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
 }
 
-function drawImageOnCanvas(imgId = 1) {
+function drawImageOnCanvas(gImgId) {
     const img = new Image()
-    const elImg = getImgById(imgId)
+    const elImg = getImgById(gImgId)
     img.src = elImg.url
 
     img.onload = () => {
@@ -71,7 +72,7 @@ function onChangeText(editedTxt) {
     setLineTxt(editedTxt)
 
     //DOM
-    renderMeme()
+    renderMeme(gImgId)
 }
 
 function onSetColorFill(EditedColor) {
@@ -79,7 +80,7 @@ function onSetColorFill(EditedColor) {
     setLineColor(EditedColor)
 
     //DOM
-    renderMeme()
+    renderMeme(gImgId)
 }
 
 function onChangeFontSize(direction) {
@@ -87,7 +88,7 @@ function onChangeFontSize(direction) {
     setLineSize(direction)
 
     //DOM
-    renderMeme()
+    renderMeme(gImgId)
 }
 
 function onAddLine() {
@@ -95,7 +96,7 @@ function onAddLine() {
     addLine()
 
     //DOM 
-    renderMeme()
+    renderMeme(gImgId)
 }
 
 

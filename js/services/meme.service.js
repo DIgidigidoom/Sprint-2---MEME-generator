@@ -31,13 +31,9 @@ var gMeme = {
         {
             txt: 'Type Your Text Here',
             size: 30,
-            color: 'black'
+            color: 'white'
         },
-        // {
-        //     txt: 'Type Your Text Here',
-        //     size: 40,
-        //     color: 'White'
-        // }
+       
 
     ]
 }
@@ -84,7 +80,7 @@ function addLine(){
  const newLine =   {
         txt: 'Type Your Text Here',
         size: 40,
-        color: 'White'
+        color: getRandomColor()
     }
     gMeme.lines.push(newLine)
 }
