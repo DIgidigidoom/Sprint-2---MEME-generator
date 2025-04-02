@@ -30,15 +30,16 @@ function drawImageOnCanvas(gImgId) {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawTxt()
-        // renderLineFocus()
+        renderLineFocus()
+        
     }
 }
 
 function drawTxt() {
-
+    
     const meme = getMeme()
     const memeLines = meme.lines
-
+   
     memeLines.forEach(memeLine => {
         gCtx.beginPath()
         gCtx.font = `${memeLine.size}px Arial`
@@ -50,22 +51,26 @@ function drawTxt() {
         setLineIndex()
     })
     
+    setLineIndex(memeLines.length-1)
+     
 }
 
-// function renderLineFocus() {
-//     var memes = getMeme()
-//     // console.log(memes.lines)
-//     // console.log(memes.selectedLineIdx)
-//     // console.log(memes.lines[memes.selectedLineIdx])
-//     const txtWidth = gCtx.measureText(memes.lines[memes.selectedLineIdx].txt).width
-//     const txtHeight = memes.lines[memes.selectedLineIdx].size
-//     gCtx.lineWidth = 2
-//     gCtx.strokeStyle = "grey"
+function renderLineFocus() {
+    var memes = getMeme()
+    // console.log(memes.lines)
+    // console.log(memes.selectedLineIdx)
+    // console.log(memes.lines[memes.selectedLineIdx])
+    const txtWidth = gCtx.measureText(memes.lines[memes.selectedLineIdx].txt).width
+    const txtHeight = memes.lines[memes.selectedLineIdx].size
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = "grey"
+    // setLineIndex()
+    const memeLineIdx = getLineIndex()
 
-
-//     const padding = 10
-//     gCtx.strokeRect((gElCanvas.width / 2) - txtWidth / 2 - padding, placeLines(memes.selectedLineIdx) - txtHeight / 2 - padding, txtWidth + padding * 2, txtHeight + padding * 2);
-// }
+    const padding = 10
+    gCtx.strokeRect((gElCanvas.width / 2) - txtWidth / 2 - padding, placeLines(memeLineIdx) - txtHeight / 2 - padding, txtWidth + padding * 2, txtHeight + padding * 2);
+    setLineIndex()
+}
 
 function placeLines(linePlacing) {
     switch (linePlacing) {
@@ -73,7 +78,7 @@ function placeLines(linePlacing) {
             return 40
         case 1:
             return 350
-        default:
+        case 2:
             return 200
 
     }
@@ -119,7 +124,7 @@ function onChangeFontSize(direction) {
 function onAddLine() {
     //Model
     addLine()
-
+    
     //DOM 
     renderMeme(gImgId)
 }

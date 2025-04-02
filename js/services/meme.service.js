@@ -45,8 +45,8 @@ function getImgs() {
 function getMeme() {
     return gMeme
 }
-function resetMeme(){
-    gMeme = 
+function resetMeme() {
+    gMeme =
     {
         selectedImgId: 1,
         selectedLineIdx: 0,
@@ -92,26 +92,32 @@ function setLineSize(direction) {
 }
 
 function addLine() {
+    if(gMeme.lines.length > 2) return
     const newLine = {
         txt: 'Type Your Text Here',
         size: 40,
         color: getRandomColor()
     }
+    
     gMeme.lines.push(newLine)
 }
 
-function setLineIndex() {
-    
-    console.log('line idx before', gMeme.selectedLineIdx)
-    console.log('length', gMeme.lines.length)
+function setLineIndex(reset) {
+    if (reset) {
+        gMeme.selectedLineIdx = reset
+        return
+    }
+    // console.log('line idx before', gMeme.selectedLineIdx)
+    // console.log('length', gMeme.lines.length)
     if (gMeme.selectedLineIdx < gMeme.lines.length-1) {
         gMeme.selectedLineIdx += 1
-
+        // console.log('line idx After', gMeme.selectedLineIdx)
     } else {
+        // console.log('line idx After', gMeme.selectedLineIdx)
         gMeme.selectedLineIdx = 0
     }
-    console.log('line idx After', gMeme.selectedLineIdx)
+
 }
-function getLineIndex(){
+function getLineIndex() {
     return gMeme.selectedLineIdx
 }
