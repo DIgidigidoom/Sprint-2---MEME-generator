@@ -25,8 +25,9 @@ function onOpenGallery() {
 function onSelectImg(imgId) {
     let elEditor = document.querySelector('.editor-container')
     let elGallery = document.querySelector('.gallery-container')
-    let memes = getMeme()
-    memes.lines.splice(1)
+    let elinputTxt = document.querySelector('.txt-input')
+    elinputTxt.value = 'Type Your Text Here'
+    resetMeme()
     elEditor.classList.remove('hide')
     elGallery.classList.add('hide')
     renderMeme(imgId)

@@ -33,7 +33,7 @@ var gMeme = {
             size: 30,
             color: 'white'
         },
-       
+
 
     ]
 }
@@ -43,6 +43,21 @@ function getImgs() {
     return gImgs
 }
 function getMeme() {
+    return gMeme
+}
+function resetMeme(){
+    gMeme = 
+    {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'Type Your Text Here',
+                size: 30,
+                color: 'white'
+            },
+        ]
+    }
     return gMeme
 }
 
@@ -76,11 +91,27 @@ function setLineSize(direction) {
     gMeme.lines[0].size += direction
 }
 
-function addLine(){
- const newLine =   {
+function addLine() {
+    const newLine = {
         txt: 'Type Your Text Here',
         size: 40,
         color: getRandomColor()
     }
     gMeme.lines.push(newLine)
+}
+
+function setLineIndex() {
+    
+    console.log('line idx before', gMeme.selectedLineIdx)
+    console.log('length', gMeme.lines.length)
+    if (gMeme.selectedLineIdx < gMeme.lines.length-1) {
+        gMeme.selectedLineIdx += 1
+
+    } else {
+        gMeme.selectedLineIdx = 0
+    }
+    console.log('line idx After', gMeme.selectedLineIdx)
+}
+function getLineIndex(){
+    return gMeme.selectedLineIdx
 }
