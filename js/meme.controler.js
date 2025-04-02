@@ -45,9 +45,9 @@ function onChangeText(editedTxt) {
 }
 
 function drawTxt(imgIdx, pos/*(0=top,1= buttom 2 = middle)*/) {
-
+    
     const meme = getMeme()
-    const memeTxt = meme.lines.txt
+    const memeTxt = meme.lines[0].txt
 
     gCtx.beginPath()
     gCtx.font = "40px Arial";

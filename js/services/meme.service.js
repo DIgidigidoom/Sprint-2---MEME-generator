@@ -22,14 +22,14 @@ var gImgs = [
 
 
 ]
-// saveToStorage(IMG_STORAGE, gImgs)
+
 var gImgs = loadFromStorage(IMG_STORAGE) || []
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Type Your Text Here',
             size: 20,
             color: 'red'
         }
@@ -62,6 +62,6 @@ function getMemeById(imgId) {
 }
 
 function setLineTxt(editedTxt) {
-    gMeme.lines.txt = editedTxt
+    gMeme.lines[0].txt = editedTxt
 
 }
