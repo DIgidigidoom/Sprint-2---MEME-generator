@@ -35,18 +35,31 @@ function drawImageOnCanvas(imgId = 1) {
 function drawTxt(imgIdx, pos/*(0=top,1= buttom 2 = middle)*/) {
 
     const meme = getMeme()
+    let linePos = meme.selectedLineIdx
+    const memeLines = meme.lines
+
+    memeLines.forEach(memeLine => {
+        gCtx.beginPath()
+        gCtx.font = `${memeLine.size}px Arial`
+        gCtx.fillStyle = memeLine.color
+        gCtx.textAlign = "center"
+        gCtx.textBaseline = "middle"
+        gCtx.fillText(memeLine.txt, gElCanvas.width / 2, placeLines(linePos))
+        linePos += 1
+    })
     
-    const memeTxt = meme.lines[0].txt
-    const memeFontSize = meme.lines[0].size
-    const memeFontColor = meme.lines[0].color
+}
 
+function placeLines(linePlacing) {
+    switch (linePlacing) {
+        case 0:
+            return 40
+        case 1:
+            return 350
+        default:
+            return 200
 
-    gCtx.beginPath()
-    gCtx.font = `${memeFontSize}px Arial`
-    gCtx.fillStyle = memeFontColor
-    gCtx.textAlign = "center"
-    gCtx.textBaseline = "middle"
-    gCtx.fillText(memeTxt, gElCanvas.width / 2, 40)
+    }
 
 }
 
@@ -69,11 +82,19 @@ function onSetColorFill(EditedColor) {
     renderMeme()
 }
 
-function onChangeFontSize(direction){
+function onChangeFontSize(direction) {
     //Model
     setLineSize(direction)
 
     //DOM
+    renderMeme()
+}
+
+function onAddLine() {
+    //Model
+    addLine()
+
+    //DOM 
     renderMeme()
 }
 

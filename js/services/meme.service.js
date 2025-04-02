@@ -30,9 +30,15 @@ var gMeme = {
     lines: [
         {
             txt: 'Type Your Text Here',
-            size: 20,
+            size: 30,
             color: 'black'
-        }
+        },
+        // {
+        //     txt: 'Type Your Text Here',
+        //     size: 40,
+        //     color: 'White'
+        // }
+
     ]
 }
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -72,4 +78,13 @@ function setLineColor(EditedColor) {
 
 function setLineSize(direction) {
     gMeme.lines[0].size += direction
+}
+
+function addLine(){
+ const newLine =   {
+        txt: 'Type Your Text Here',
+        size: 40,
+        color: 'White'
+    }
+    gMeme.lines.push(newLine)
 }
