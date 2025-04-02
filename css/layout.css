@@ -43,3 +43,8 @@
 .editor-container>*{
     width: fit-content;
 }
+
+.hide{
+    z-index: -1;
+    display: none;
+}

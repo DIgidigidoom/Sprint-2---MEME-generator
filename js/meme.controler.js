@@ -2,7 +2,7 @@
 var gElCanvas
 var gCtx
 var gElImage
-
+var imgId = 1 
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -10,10 +10,10 @@ function onInitEditor() {
     renderMeme()
 }
 //////////////////////////////// Canvas //////////////////////////////////////////
-function renderMeme() {
+function renderMeme(imgId) {
     
     
-    drawImageOnCanvas(1)
+    drawImageOnCanvas(imgId)
     
 }
 
@@ -22,7 +22,7 @@ function onClearCanvas() {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
 }
 
-function drawImageOnCanvas(imgId) {
+function drawImageOnCanvas(imgId = 1) {
     const img = new Image()
     const elImg = getImgById(imgId)
     img.src = elImg.url

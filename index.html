@@ -9,26 +9,28 @@
     <title>Document</title>
 </head>
 
-<body onload="onInitEditor()">
+<body onload="onInitEditor();onInitGallery()">
 
     <div class="main-container">
         <div class="main-header">
             <div class="logo">LOGO</div>
             <nav class="main-nav">
-                <div class="nav-cell"><a class="clean-a" href="#">Gallery</a></div>
+                <div class="nav-cell"><a class="clean-a" href="#" onclick="onOpenGallery()">Gallery</a></div>
                 <div class="nav-cell"><a class="clean-a" href="#">Saved</a></div>
                 <div class="nav-cell"><a class="clean-a" href="#">About</a></div>
 
             </nav>
         </div>
-        <!-- <div class="gallery-container"></div> -->
-        <div class="editor-container">
+        <div class="gallery-container"></div>
+        <div class="editor-container hide" >
             <div class="canvas-container">
                 <canvas width="400" height="400">
                 </canvas>
             </div>
             <div class="paint-options">
-                <input type="color" onchange="onSetColor(this.value)">
+                <input class="txt-input" type="text" 
+                value="Type Your Text Here" oninput="onChangeText(this.value)">
+                <!-- <input type="color" onchange="onSetColor(this.value)">
                 <select name="brush-size" id="brush-size" onchange="onSetSize(this.value)">
                     <option value="brush-xs">1</option>
                     <option value="brush-s">2</option>
@@ -39,7 +41,7 @@
                 <select name="brush-shape" id="brush-shape" onchange="onSetShape(this.value)">
                     <option value="square" selected>Square</option>
                     <option value="circle">circle</option>
-                </select>
+                </select> -->
                 <button class="clr-btn" onclick="onClearCanvas()">Clear</button>
             </div>
         </div>
