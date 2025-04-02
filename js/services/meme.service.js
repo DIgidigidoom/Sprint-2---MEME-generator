@@ -18,6 +18,9 @@ var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 function getImgs() {
     return gImgs
 }
+function getMeme() {
+    return gMeme
+}
 
 function createImg() {
     return {
@@ -30,4 +33,13 @@ function createImg() {
 
 function getImgById(imgId) {
     return gImgs.find(img => imgId === img.id)
+}
+function getMemeById(imgId) {
+    debugger
+    return gMeme.find(meme => imgId === meme.selectedImgId)
+}
+
+function setLineTxt(editedTxt){
+    gMeme.lines.txt = editedTxt
+    
 }
