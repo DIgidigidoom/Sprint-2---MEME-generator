@@ -32,6 +32,23 @@ function drawImageOnCanvas(imgId = 1) {
     }
 }
 
+function drawTxt(imgIdx, pos/*(0=top,1= buttom 2 = middle)*/) {
+
+    const meme = getMeme()
+    
+    const memeTxt = meme.lines[0].txt
+    const memeFontSize = meme.lines[0].size
+    const memeFontColor = meme.lines[0].color
+
+
+    gCtx.beginPath()
+    gCtx.font = `${memeFontSize}px Arial`
+    gCtx.fillStyle = memeFontColor
+    gCtx.textAlign = "center"
+    gCtx.textBaseline = "middle"
+    gCtx.fillText(memeTxt, gElCanvas.width / 2, 40)
+
+}
 
 /////////////////////////////// Editor Options ////////////////////////////////////
 
@@ -52,22 +69,14 @@ function onSetColorFill(EditedColor) {
     renderMeme()
 }
 
-function drawTxt(imgIdx, pos/*(0=top,1= buttom 2 = middle)*/) {
+function onChangeFontSize(direction){
+    //Model
+    setLineSize(direction)
 
-    const meme = getMeme()
-    const memeTxt = meme.lines[0].txt
-    const memeFontSize = meme.lines[0].size
-    const memeFontColor = meme.lines[0].color
-
-
-    gCtx.beginPath()
-    gCtx.font = `${memeFontSize}px Arial`
-    gCtx.fillStyle = memeFontColor
-    gCtx.textAlign = "center"
-    gCtx.textBaseline = "middle"
-    gCtx.fillText(memeTxt, gElCanvas.width / 2, 40)
-
+    //DOM
+    renderMeme()
 }
+
 
 
 

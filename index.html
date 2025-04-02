@@ -30,6 +30,8 @@
                 <input class="txt-input" type="text" value="Type Your Text Here" oninput="onChangeText(this.value)">
                 <!-- <input type="color" onchange="onSetColorStroke(this.value)"> -->
                 <input type="color" onchange="onSetColorFill(this.value)">
+                <button class="btn font-size-btn" onclick="onChangeFontSize(1)">+</button>
+                <button class="btn font-size-btn" onclick="onChangeFontSize(-1)">-</button>
                 <!-- <select name="brush-size" id="brush-size" onchange="onSetSize(this.value)">
                     <option value="brush-xs">1</option>
                     <option value="brush-s">2</option>
@@ -41,7 +43,7 @@
                     <option value="square" selected>Square</option>
                     <option value="circle">circle</option>
                 </select> -->
-                <button class="clr-btn" onclick="onClearCanvas()">Clear</button>
+                <button class="btn clr-btn" onclick="onClearCanvas()">Clear</button>
             </div>
             <a href="#" class="download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
 

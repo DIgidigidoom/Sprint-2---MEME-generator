@@ -31,7 +31,7 @@ var gMeme = {
         {
             txt: 'Type Your Text Here',
             size: 20,
-            color: 'red'
+            color: 'black'
         }
     ]
 }
@@ -66,6 +66,10 @@ function setLineTxt(editedTxt) {
 
 }
 
-function setLineColor(EditedColor){
-    gMeme.lines[0].color = EditedColor 
+function setLineColor(EditedColor) {
+    gMeme.lines[0].color = EditedColor
+}
+
+function setLineSize(direction) {
+    gMeme.lines[0].size += direction
 }
