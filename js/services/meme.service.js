@@ -27,3 +27,7 @@ function createImg() {
         keywords: ['funny', 'cat']
     }
 }
+
+function getImgById(imgId) {
+    return gImgs.find(img => imgId === img.id)
+}
