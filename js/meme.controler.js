@@ -32,6 +32,8 @@ function drawImageOnCanvas(gImgId) {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawTxt()
         renderLineFocus()
+        renderInputTxtBox()
+
 
     }
 
@@ -118,7 +120,8 @@ function onSelectTxt(ev) {
 function onChangeText(editedTxt) {
 
     //Model
-    setLineTxt(editedTxt)
+    const lineIdx = getLineIndex()
+    setLineTxt(editedTxt,lineIdx)
 
     //DOM
     renderMeme(gImgId)
@@ -126,7 +129,8 @@ function onChangeText(editedTxt) {
 
 function onSetColorFill(EditedColor) {
     //Model
-    setLineColor(EditedColor)
+    const lineIdx = getLineIndex()
+    setLineColor(EditedColor,lineIdx)
 
     //DOM
     renderMeme(gImgId)
@@ -134,7 +138,8 @@ function onSetColorFill(EditedColor) {
 
 function onChangeFontSize(direction) {
     //Model
-    setLineSize(direction)
+    const lineIdx = getLineIndex()
+    setLineSize(direction,lineIdx)
 
     //DOM
     renderMeme(gImgId)
@@ -188,6 +193,13 @@ function onToggleLinesFocus() {
 
 
 }
+
+function renderInputTxtBox(){
+  const elTxtBox =  document.querySelector('.txt-input')
+  const lineIdx = getLineIndex()
+  elTxtBox.value = getMeme().lines[lineIdx].txt
+}
+
 
 
 

@@ -90,17 +90,17 @@ function getMemeById(imgId) {
     return gMeme.find(meme => imgId === meme.selectedImgId)
 }
 
-function setLineTxt(editedTxt) {
-    gMeme.lines[0].txt = editedTxt
+function setLineTxt(editedTxt,lineIdx) {
+    gMeme.lines[lineIdx].txt = editedTxt
 
 }
 
-function setLineColor(EditedColor) {
-    gMeme.lines[0].color = EditedColor
+function setLineColor(EditedColor,lineIdx) {
+    gMeme.lines[lineIdx].color = EditedColor
 }
 
-function setLineSize(direction) {
-    gMeme.lines[0].size += direction
+function setLineSize(direction,lineIdx) {
+    gMeme.lines[lineIdx].size += direction
 }
 
 function addLine() {
