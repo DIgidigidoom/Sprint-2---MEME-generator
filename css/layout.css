@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+.main-container {
+    display: grid;
+    grid-template-columns: minmax(40px, 1fr) minmax(auto, 1260px) minmax(40px, 1fr);
+}
+.main-container>*{
+    grid-column: 2;
+    place-items: center;
+}
+
+.main-header{
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    background-color: aliceblue;
+}
+.main-nav{
+    display: flex;
+}
