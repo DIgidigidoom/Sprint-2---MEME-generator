@@ -22,7 +22,7 @@ var gImgs = [
 
 
 ]
-saveToStorage(IMG_STORAGE, gImgs)
+// saveToStorage(IMG_STORAGE, gImgs)
 var gImgs = loadFromStorage(IMG_STORAGE) || []
 var gMeme = {
     selectedImgId: 1,
