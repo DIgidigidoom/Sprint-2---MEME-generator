@@ -31,28 +31,29 @@ function drawImageOnCanvas(gImgId) {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawTxt()
         renderLineFocus()
-        
+
     }
+
 }
 
 function drawTxt() {
-    
+
     const meme = getMeme()
     const memeLines = meme.lines
-   
+    let memeLineIdx = 0
     memeLines.forEach(memeLine => {
         gCtx.beginPath()
         gCtx.font = `${memeLine.size}px Arial`
         gCtx.fillStyle = memeLine.color
         gCtx.textAlign = "center"
         gCtx.textBaseline = "middle"
-        let memeLineIdx = getLineIndex()
         gCtx.fillText(memeLine.txt, gElCanvas.width / 2, placeLines(memeLineIdx))
-        setLineIndex()
+        memeLineIdx += 1
+
     })
+
     
-    setLineIndex(memeLines.length-1)
-     
+
 }
 
 function renderLineFocus() {
@@ -64,12 +65,11 @@ function renderLineFocus() {
     const txtHeight = memes.lines[memes.selectedLineIdx].size
     gCtx.lineWidth = 2
     gCtx.strokeStyle = "grey"
-    // setLineIndex()
     const memeLineIdx = getLineIndex()
 
     const padding = 10
     gCtx.strokeRect((gElCanvas.width / 2) - txtWidth / 2 - padding, placeLines(memeLineIdx) - txtHeight / 2 - padding, txtWidth + padding * 2, txtHeight + padding * 2);
-    setLineIndex()
+    
 }
 
 function placeLines(linePlacing) {
@@ -84,15 +84,17 @@ function placeLines(linePlacing) {
     }
 }
 
-// function onToggleLinesFocus() {
-//     //model
-//     setLineIndex()
-
-//     //DOM
-//     renderMeme()
+function onToggleLinesFocus() {
+    
+    //model
+    setLineIndex()
 
 
-// }
+    //DOM
+    renderMeme()
+
+
+}
 
 /////////////////////////////// Editor Options ////////////////////////////////////
 
@@ -124,7 +126,7 @@ function onChangeFontSize(direction) {
 function onAddLine() {
     //Model
     addLine()
-    
+    setLineIndex()
     //DOM 
     renderMeme(gImgId)
 }

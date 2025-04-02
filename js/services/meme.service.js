@@ -33,8 +33,6 @@ var gMeme = {
             size: 30,
             color: 'white'
         },
-
-
     ]
 }
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
