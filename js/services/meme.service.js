@@ -31,7 +31,14 @@ var gMeme = {
         {
             txt: 'Type Your Text Here',
             size: 30,
-            color: 'white'
+            color: 'white',
+            // pos : {
+            //     x,
+            //     y,
+            //     height,
+            //     width 
+
+            // },
         },
     ]
 }
@@ -100,11 +107,7 @@ function addLine() {
     gMeme.lines.push(newLine)
 }
 
-function setLineIndex(reset) {
-    if (reset) {
-        gMeme.selectedLineIdx = reset
-        return
-    }
+function setLineIndex() {
     // console.log('line idx before', gMeme.selectedLineIdx)
     // console.log('length', gMeme.lines.length)
     if (gMeme.selectedLineIdx < gMeme.lines.length-1) {
@@ -118,4 +121,8 @@ function setLineIndex(reset) {
 }
 function getLineIndex() {
     return gMeme.selectedLineIdx
+}
+
+function setPos(){
+
 }
