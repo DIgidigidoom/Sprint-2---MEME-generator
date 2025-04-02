@@ -9,9 +9,9 @@
     <title>Document</title>
 </head>
 
-<body onload="onInit()">
+<body onload="onInitGallery()">
 
-    <div class="main-container">
+    <div class="main-container gallery-mode">
         <div class="main-header">
             <div class="logo">LOGO</div>
             <nav class="main-nav">
@@ -21,13 +21,18 @@
 
             </nav>
         </div>
-        <div class="gallery-container"></div>
-        <div class="editor-container"></div>
+        <div class="gallery-container">
+
+        </div>
+        <!-- <div class="editor-container"></div> -->
 
     </div>
 
-    <script src="js/controler.js"></script>
+    <script src="js/meme.controler.js"></script>
+    <script src="js/gallery.controler.js"></script>
     <script src="js/services/meme.service.js"></script>
+    <script src="js/services/gallery.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
 </body>
 
 </html>

@@ -22,3 +22,16 @@
 .main-nav{
     display: flex;
 }
+
+.gallery-mode .gallery-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: fit-content;
+    gap: 20px;
+}
+
+
+.gallery-mode .gallery-container  img {
+   width: 100%;
+   height: 100%;
+}
