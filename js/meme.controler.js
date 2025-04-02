@@ -51,9 +51,14 @@ function drawTxt() {
         memeLineIdx += 1
 
 
+        const x = gElCanvas.width / 2;
+        const y = placeLines(memeLineIdx);
         const txtWidth = gCtx.measureText(memeLine.txt).width
         const txtHeight = memeLine.size
-        // const txtXPos = 
+
+        console.log(x)
+        console.log(y)
+
         console.log(txtWidth)
         console.log(txtHeight)
 
@@ -98,7 +103,7 @@ function onToggleLinesFocus() {
 
 
     //DOM
-    renderMeme()
+    renderMeme(gImgId)
 
 
 }
