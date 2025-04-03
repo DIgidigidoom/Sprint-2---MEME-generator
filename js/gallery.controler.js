@@ -15,7 +15,7 @@ function renderImgs() {
 
 function onOpenGallery() {
     let elEditor = document.querySelector('.editor-container')
-    let elGallery = document.querySelector('.gallery-container')
+    let elGallery = document.querySelector('.gallery-layout')
 
     elEditor.classList.add('hide')
     elGallery.classList.remove('hide')
@@ -24,7 +24,7 @@ function onOpenGallery() {
 
 function onSelectImg(imgId) {
     let elEditor = document.querySelector('.editor-container')
-    let elGallery = document.querySelector('.gallery-container')
+    let elGallery = document.querySelector('.gallery-layout')
     let elinputTxt = document.querySelector('.txt-input')
     elinputTxt.value = 'Type Your Text Here'
     resetMeme()
