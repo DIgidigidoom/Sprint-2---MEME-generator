@@ -143,6 +143,12 @@
     .srch-gallery {
         width: 90%;
     }
+    .main-screen{
+        display: none;
+    }
+    .hamburger-btn{
+        display: none;
+    }
 
 }
 
