@@ -63,7 +63,7 @@ function drawTxt() {
         const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
         const y = placeLines(memeLineIdx) - memeLine.size / 2;
         const txtWidth = gCtx.measureText(memeLine.txt).width
-        const txtHeight = memeLine.size
+        const txtHeight = memeLine.size +30
         setPos(x, y, txtWidth, txtHeight, memeLineIdx)
 
         memeLineIdx += 1
@@ -108,13 +108,15 @@ function placeLines(linePlacing) {
 }
 
 function onSelectTxt(ev) {
-    const { offsetX, offsetY } = ev
-
+    const pos = getEvPos(ev)
+    
     const memeLines = getMeme().lines
 
     const clickedTxtLineIndx = memeLines.findIndex(line =>
-        offsetX >= line.pos.x && offsetX <= (line.pos.x + line.pos.width) &&
-        offsetY >= line.pos.y && offsetY <= (line.pos.y + line.pos.height)
+        pos.x >= line.pos.x && pos.x<= (line.pos.x + line.pos.width) &&
+        pos.y >= line.pos.y && pos.y <= (line.pos.y + line.pos.height)
+        // pos.offsetX >= line.pos.x && pos.offsetX <= (line.pos.x + line.pos.width) &&
+        // pos.offsetY >= line.pos.y && pos.offsetY <= (line.pos.y + line.pos.height)
     )
     console.log(clickedTxtLineIndx)
    
