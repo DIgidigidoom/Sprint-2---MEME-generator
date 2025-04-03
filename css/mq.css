@@ -16,13 +16,26 @@
         gap: 20px;
     }
 
+    .righSide-srch {
+        width: 90%;
+        flex-direction: column;
+    }
     .freq-search {
         width: 85%;
 
     }
+    .freq-search {
+        width: 90%;
+        font-size: 0.5rem;
+    }
 
     .srch-gallery {
         width: 90%;
+        
+
+    }
+    .paint-options{
+        gap: 20px;
     }
 
     .gallery-container {
@@ -41,6 +54,9 @@
 
     .main-header {
         width: 90vw;
+    }
+    .txt-input{
+        font-size: unset;
     }
 
 }
