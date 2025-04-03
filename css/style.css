@@ -122,9 +122,6 @@ body {
     justify-content: center;
     align-items: center;
 
-    width: 540px;
-    height: 540px;
-
 }
 
 .canvas-container canvas {
@@ -136,8 +133,7 @@ body {
 }
 
 .paint-options {
-    width: 540px;
-    height: 540px;
+   
     background-color: rgb(66, 75, 75);
     border-radius: 20px;
     border: 5px solid rgb(64, 64, 64);

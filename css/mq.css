@@ -1,5 +1,9 @@
 @media(max-width:780px) {
-    
+    .canvas-container {
+       
+        width: 360px;
+        height: 360px;
+    }
 }
 
 @media (min-width:780px) {
@@ -8,11 +12,13 @@
         grid-template-columns: minmax(16px, 1fr) minmax(auto, 740px) minmax(16px, 1fr);
         
     }
-    .canvas-container {
-       
-        width: 100%;
-        height: 400px;
+    .editor-container {
+        
+        flex-direction: unset;
+        
+        
     }
+    
     .paint-options {
         width: 100%;
         height: 400px;

@@ -5,8 +5,9 @@
 
 
 .main-container {
-    display: grid;
-    grid-template-columns: minmax(40px, 1fr) minmax(auto, 1260px) minmax(40px, 1fr);
+        display: grid;
+        grid-template-columns: 10px 1fr 10px;
+    
 
 
 }
@@ -61,6 +62,7 @@
 
 .editor-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 20px;
     width: 100%;
