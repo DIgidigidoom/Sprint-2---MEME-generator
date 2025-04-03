@@ -8,8 +8,6 @@ function onInitEditor() {
     gCtx = gElCanvas.getContext('2d')
     _createImages()
     CanvasFont()
-    var imgs = getImgs()
-    // saveToStorage(IMG_STORAGE, imgs)
     onClearCanvas()
     renderMeme()
 }
