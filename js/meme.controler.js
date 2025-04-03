@@ -159,7 +159,7 @@ function onChangeFontSize(direction) {
 
 function onAddLine() {
     //Model
-    debugger
+    
     addLine()
 
     //DOM 

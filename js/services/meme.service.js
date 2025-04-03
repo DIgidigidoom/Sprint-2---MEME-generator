@@ -117,13 +117,12 @@ function addLine() {
 
         },
     }
-    toggleLineIndex()
     gMeme.lines.push(newLine)
+    toggleLineIndex()
 }
 
 function toggleLineIndex() {
-    debugger
-    if (gMeme.selectedLineIdx < gMeme.lines.length ) {
+    if (gMeme.selectedLineIdx < gMeme.lines.length -1 ) {
         gMeme.selectedLineIdx += 1
 
     } else {
