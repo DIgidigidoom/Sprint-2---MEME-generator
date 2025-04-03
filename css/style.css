@@ -34,6 +34,55 @@ body {
     color: white;
 }
 
+.gallery-layout {
+    background-color: rgb(48, 47, 47);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px rgb(13, 1, 1);
+}
+
+.gallery-container img {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 5px 5px 5px 5px rgb(13, 1, 1);
+}
+
+.srch-gallery {
+    height: 60px;
+    width: 540px;
+    border-radius: 500px;
+    background-color: rgba(33.999481201171875, 37.003326416015625, 43.99932861328125, 1);
+    font-family: poppins-light;
+    font-size: 1.3125rem;
+    color: rgba(255, 255, 255, 0.743);
+    padding-left: 40px;
+    
+}
+
+
+
+.freq-search {
+    background-color: gray;
+    border-radius: 500px;
+    height: 60px;
+    width: 540px;
+    font-family: poppins-light;
+    color: rgba(255, 255, 255, 0.743);
+    box-shadow: 2px 2px 2px 2px rgb(13, 1, 1);
+}
+
+.more-btn{
+    width: 95px;
+    height: 40px;
+    border-radius: 100px;
+    background: linear-gradient(to right, #3d92b9, #37cd84);
+    font-family: poppins-light;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.743);
+    box-shadow: 2px 2px 2px 2px rgb(13, 1, 1);
+}
+
 .canvas-container {
     background-color: white;
     border-radius: 20px;
@@ -89,8 +138,6 @@ body {
     box-shadow: inset 5px 5px 0px rgba(159, 225, 245, 0.775);
     filter: drop-shadow(0px 5px 1px rgb(55, 120, 160));
     font-size: 1.6rem;
-    padding: 0;
-
 }
 
 .add-btn {
@@ -114,8 +161,8 @@ body {
     font-size: 1.6rem;
 }
 
-.text-edit-row{
-    width:fit-content ;
+.text-edit-row {
+    width: fit-content;
     display: flex;
 }
 
@@ -141,26 +188,28 @@ body {
 
 }
 
-.font-size-btn{
+.font-size-btn {
     font-size: 1.6rem;
-    
+
 }
-.pallete-div{
+
+.pallete-div {
     display: flex;
     text-align: center;
 }
 
-.pallete-icon{
+.pallete-icon {
     display: flex;
-    
+
 
 }
-.pallete-icon span{
-    
+
+.pallete-icon span {
+
     width: 60px;
     height: 100%;
     font-size: 2.9rem;
-    
+
 }
 
 .download-btn {

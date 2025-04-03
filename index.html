@@ -21,8 +21,21 @@
                 <a class="nav-about" href="#">About</a>
             </nav>
         </div>
-        <div class="gallery-container hide"></div>
-        <div class="editor-container ">
+        <div class="gallery-layout ">
+            <div class="search-gallery-container">
+                <input class="srch-gallery" placeholder="Search" type="text">
+                <div class="freq-search">
+                    <h2>blah</h2>
+                    <h2>blah</h2>
+                    <h2>blah</h2>
+                    <h2>blah</h2>
+                    <h2>blah</h2>
+                </div>
+                <button class="more-btn">More</button>
+            </div>
+            <div class="gallery-container"></div>
+        </div>
+        <div class="editor-container hide ">
             <div class="canvas-container">
                 <canvas width="540" height="540" onclick="onSelectTxt(event)">
                 </canvas>
@@ -41,13 +54,14 @@
                     <button class="btn font-size-btn" onclick="onChangeFontSize(1)">🗚</button>
                     <button class="btn font-size-btn" onclick="onChangeFontSize(-1)">🗛</button>
                     <div class="pallete-div">
-            
-                    <label class="pallete-icon"  for="colorPicker">
-                        <span >🎨</span>
-                    </label>
-                
-                    <input class="color-pallete" type="color" id="colorPicker" value="#FFFFFF" style="visibility: hidden;"  onchange="onSetColorFill(this.value)">
-                </div>
+
+                        <label class="pallete-icon" for="colorPicker">
+                            <span>🎨</span>
+                        </label>
+
+                        <input class="color-pallete" type="color" id="colorPicker" value="#FFFFFF"
+                            style="visibility: hidden;" onchange="onSetColorFill(this.value)">
+                    </div>
                 </div>
                 <div class="share-row">
                     <a href="#" class="download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download 📥</a>

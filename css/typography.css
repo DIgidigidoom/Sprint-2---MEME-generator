@@ -6,3 +6,7 @@
     font-family: poppins-extra-bold;
     src: url('/fonts/Poppins-ExtraBold.ttf');
   }
+@font-face {
+    font-family: poppins-light;
+    src: url('/fonts/Poppins-Light.ttf');
+  }
