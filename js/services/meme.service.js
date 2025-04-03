@@ -21,9 +21,9 @@ var gImgs = [
     { id: 18, url: 'Images/18.jpg', keywords: ['funny', 'cat'] },
 
 
-]
+] || loadFromStorage(IMG_STORAGE)
 
-var gImgs = loadFromStorage(IMG_STORAGE) || []
+
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
