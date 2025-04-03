@@ -50,7 +50,7 @@ body {
 
 .srch-gallery {
     height: 60px;
-    width: 540px;
+    
     border-radius: 500px;
     background-color: rgba(33.999481201171875, 37.003326416015625, 43.99932861328125, 1);
     font-family: poppins-light;
@@ -60,11 +60,15 @@ body {
     
 }
 
+.righSide-srch{
+    display: flex;
+    place-items: center;
+    gap: 30px;
+}
 .freq-search {
     background-color: gray;
     border-radius: 500px;
     height: 60px;
-    width: 540px;
     font-family: poppins-light;
     color: rgba(255, 255, 255, 0.743);
     box-shadow: 2px 2px 2px 2px rgb(13, 1, 1);
