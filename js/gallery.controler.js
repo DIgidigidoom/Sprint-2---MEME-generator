@@ -1,6 +1,7 @@
 'use strict'
 
 function onInitGallery() {
+    _createImages()
     renderImgs()
 }
 

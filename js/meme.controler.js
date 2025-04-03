@@ -6,6 +6,7 @@ var gImgId = 1
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+    _createImages()
     CanvasFont()
     var imgs = getImgs()
     saveToStorage(IMG_STORAGE, imgs)
