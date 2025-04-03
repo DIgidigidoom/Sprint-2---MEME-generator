@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/typography.css">
     <title>Document</title>
 </head>
 
@@ -13,43 +14,41 @@
 
     <div class="main-container">
         <div class="main-header">
-            <div class="logo">LOGO</div>
+            <h1 class="logo">LOGO</h1>
             <nav class="main-nav">
-                <div class="nav-cell"><a class="clean-a" href="#" onclick="onOpenGallery()">Gallery</a></div>
-                <div class="nav-cell"><a class="clean-a" href="#">Saved</a></div>
-                <div class="nav-cell"><a class="clean-a" href="#">About</a></div>
+                <a class="nav-gallery" href="#" onclick="onOpenGallery()">Gallery</a>
+                <a class="nav-saved" href="#">Saved</a>
+                <a class="nav-about" href="#">About</a>
             </nav>
         </div>
         <div class="gallery-container hide"></div>
         <div class="editor-container ">
             <div class="canvas-container">
-                <canvas width="400" height="400" onclick="onSelectTxt(event)">
+                <canvas width="540" height="540" onclick="onSelectTxt(event)">
                 </canvas>
             </div>
             <div class="paint-options">
-                <input class="txt-input" type="text"  oninput="onChangeText(this.value)">
+                <input class="txt-input" type="text" oninput="onChangeText(this.value)">
+                <div class="line-edit-row">
+                    <button class="btn add-btn" onclick="onAddLine()">ADD</button>
+                    <button class="btn toggle-line-btn" onclick="onToggleLinesFocus()">Toggle</button>
+                    <button class="btn dlt-line-btn">Delete</button>
+                    <button class="btn clr-btn" onclick="onClearCanvas()">Clear</button>
+
+                </div>
                 <!-- <input type="color" onchange="onSetColorStroke(this.value)"> -->
-                <input type="color" value="#FFFFFF" onchange="onSetColorFill(this.value)">
-                <button class="btn font-size-btn" onclick="onChangeFontSize(1)">+</button>
-                <button class="btn font-size-btn" onclick="onChangeFontSize(-1)">-</button>
-                <button class="btn font-size-btn" onclick="onAddLine()">ADD</button>
-                <button class="btn font-size-btn" onclick="onToggleLinesFocus()">Toggle</button>
-                <!-- <select name="brush-size" id="brush-size" onchange="onSetSize(this.value)">
-                    <option value="brush-xs">1</option>
-                    <option value="brush-s">2</option>
-                    <option value="brush-m" selected>5</option>
-                    <option value="brush-l">10</option>
-                    <option value="brush-xl">20</option>
-                </select>
-                <select name="brush-shape" id="brush-shape" onchange="onSetShape(this.value)">
-                    <option value="square" selected>Square</option>
-                    <option value="circle">circle</option>
-                </select> -->
-                <button class="btn clr-btn" onclick="onClearCanvas()">Clear</button>
+                <div class="text-edit-row">
+                    <input type="color" value="#FFFFFF" onchange="onSetColorFill(this.value)">
+                    <button class="btn font-size-btn" onclick="onChangeFontSize(1)">+</button>
+                    <button class="btn font-size-btn" onclick="onChangeFontSize(-1)">-</button>
+                </div>
+                <div class="share-row">
+                    <a href="#" class="download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
+                </div>
             </div>
-            <a href="#" class="download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
 
         </div>
+
 
     </div>
 

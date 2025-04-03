@@ -6,6 +6,7 @@ var gImgId = 1
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+    // CanvasFont()
     var imgs = getImgs()
     saveToStorage(IMG_STORAGE, imgs)
     onClearCanvas()
@@ -21,6 +22,12 @@ function renderMeme(imgId = 1) {
 function onClearCanvas() {
     gCtx.fillStyle = 'white'
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
+}
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.clientWidth
+    gElCanvas.height = elContainer.clientHeight
+    renderMeme()
 }
 
 function drawImageOnCanvas(gImgId) {
@@ -46,7 +53,7 @@ function drawTxt() {
     let memeLineIdx = 0
     memeLines.forEach(memeLine => {
         gCtx.beginPath()
-        gCtx.font = `${memeLine.size}px Arial`
+        gCtx.font = `${memeLine.size}px Poppins-extra-bold`
         gCtx.fillStyle = memeLine.color
         gCtx.textAlign = "center"
         gCtx.textBaseline = "middle"
@@ -66,7 +73,12 @@ function drawTxt() {
 
 
 }
-
+function CanvasFont(){
+    const font = new FontFace('Poppins-extra-bold', 'url(/fonts/Poppins-ExtraBold.ttf)');
+    font.load().then(function(loadedFont) {
+        document.fonts.add(loadedFont);
+    });
+}
 function renderLineFocus() {
     var memes = getMeme()
     // console.log(memes.lines)
@@ -87,11 +99,11 @@ function renderLineFocus() {
 function placeLines(linePlacing) {
     switch (linePlacing) {
         case 0:
-            return 40
+            return gElCanvas.height * 0.1
         case 1:
-            return 350
+            return gElCanvas.height * 0.9
         case 2:
-            return 200
+            return gElCanvas.height/2
 
     }
 }
@@ -147,6 +159,7 @@ function onChangeFontSize(direction) {
 
 function onAddLine() {
     //Model
+    debugger
     addLine()
 
     //DOM 

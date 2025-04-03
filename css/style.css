@@ -1,21 +1,77 @@
-.canvas-container{
-    width: 100%;
-    background-color: indianred;
-    margin: auto;
+body {
+    background-image: url('../Images/Background.jpg');
+    
+    background-size: cover;
+    
+    background-position: center;
+    
+    background-repeat: no-repeat;
+    
+}
+
+.main-header{
+    background: linear-gradient(to right, #3d92b9, #37cd84);
+    height: fit-content;
+    border-radius: 500px;
+}
+.logo{
+    margin: 30px 0 30px 10%;
+    font-family: poppins-regular;
+    font-size: 1.3125rem;
+    color: white;
+}
+.main-nav{
+    font-family: poppins-regular;
+    font-size: 1.35rem;
+    
+}
+.main-nav>*{
+    text-decoration: none;
+    margin: auto 60px;
+    color: white;
+}
+
+.canvas-container {
+    background-color:white;
+    border-radius: 20px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
+    width: 540px;
+    height: 540px;
+
 }
 
-.canvas-container canvas{
-    background-color:white;
-    border: 3px solid lightslategray ;
+.canvas-container canvas {
+    background-color: white;
+    border: 5px solid rgb(64, 64, 64);
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+}
+.paint-options{
+    width: 540px;
+    height: 540px;
+    background-color: azure;
+    border-radius: 20px;
+    border: 5px solid rgb(64, 64, 64);
+    text-align: center;
+}
+.txt-input{
+    width: 80%;
+    height: fit-content;
+    border-radius: 100px;
+    text-align: center;
+    font-family: poppins-regular;
+    font-size: 1.6rem;
+    padding: 15px;
 }
 
-.gallery .dlt-btn{
-   border-radius: 4px;
-    
+.gallery .dlt-btn {
+    border-radius: 4px;
+
 }
 
 .download-btn {
@@ -26,4 +82,4 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
