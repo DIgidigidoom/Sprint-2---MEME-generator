@@ -30,20 +30,27 @@
             <div class="paint-options">
                 <input class="txt-input" type="text" oninput="onChangeText(this.value)">
                 <div class="line-edit-row">
-                    <button class="btn add-btn" onclick="onAddLine()">ADD</button>
-                    <button class="btn toggle-line-btn" onclick="onToggleLinesFocus()">Toggle</button>
-                    <button class="btn dlt-line-btn">Delete</button>
-                    <button class="btn clr-btn" onclick="onClearCanvas()">Clear</button>
+                    <button class="btn toggle-line-btn" onclick="onToggleLinesFocus()">&#8645</button>
+                    <button class="btn add-btn" onclick="onAddLine()">➕</button>
+                    <button class="btn dlt-line-btn">🗑️</button>
+                    <button class="btn clr-btn" onclick="onClearCanvas()">🧹</button>
 
                 </div>
                 <!-- <input type="color" onchange="onSetColorStroke(this.value)"> -->
                 <div class="text-edit-row">
-                    <input type="color" value="#FFFFFF" onchange="onSetColorFill(this.value)">
-                    <button class="btn font-size-btn" onclick="onChangeFontSize(1)">+</button>
-                    <button class="btn font-size-btn" onclick="onChangeFontSize(-1)">-</button>
+                    <button class="btn font-size-btn" onclick="onChangeFontSize(1)">🗚</button>
+                    <button class="btn font-size-btn" onclick="onChangeFontSize(-1)">🗛</button>
+                    <div class="pallete-div">
+            
+                    <label class="pallete-icon"  for="colorPicker">
+                        <span >🎨</span>
+                    </label>
+                
+                    <input class="color-pallete" type="color" id="colorPicker" value="#FFFFFF" style="visibility: hidden;"  onchange="onSetColorFill(this.value)">
+                </div>
                 </div>
                 <div class="share-row">
-                    <a href="#" class="download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
+                    <a href="#" class="download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download 📥</a>
                 </div>
             </div>
 
