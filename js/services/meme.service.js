@@ -1,8 +1,9 @@
 'use strict'
 const IMG_STORAGE = 'imageDB'
+var gImgs
 function _createImages() {
 
-    var gImgs = loadFromStorage(IMG_STORAGE)
+    gImgs = loadFromStorage(IMG_STORAGE)
 
     if (!gImgs || !gImgs.length) {
          gImgs = [

@@ -9,7 +9,7 @@ function onInitEditor() {
     _createImages()
     CanvasFont()
     var imgs = getImgs()
-    saveToStorage(IMG_STORAGE, imgs)
+    // saveToStorage(IMG_STORAGE, imgs)
     onClearCanvas()
     renderMeme()
 }
