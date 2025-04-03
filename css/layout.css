@@ -59,27 +59,22 @@
 }
 
 
-
-
-
-
-
 .editor-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
     gap: 20px;
     width: 100%;
+    height: fit-content;
 }
 
 .editor-container>* {
     width: fit-content;
+    
 }
 
 .paint-options {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    height: 100%;
-    width: 100%;
     place-items: center;
 
 }
