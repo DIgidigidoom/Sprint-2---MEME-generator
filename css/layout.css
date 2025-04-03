@@ -83,3 +83,26 @@
     z-index: -1;
     display: none;
 }
+
+.main-screen{
+    inset: 0;
+    position: fixed;
+    background-color:rgba(0, 0, 0, 0.5) ;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+body.menu-open .main-screen{
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.hamburger-btn{
+    margin-right: 30px;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: white;
+    border: 0.1px solid white;
+}

@@ -7,69 +7,98 @@
         overflow-x: hidden;
     }
 
-    .canvas-container {
-        width: 360px;
-        height: 360px;
-    }
-    .search-gallery-container {
+    .main-nav {
+        display: flex;
         flex-direction: column;
-        gap: 20px;
-    }
-
-    .righSide-srch {
-        width: 90%;
-        flex-direction: column;
-    }
-    .freq-search {
-        width: 85%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        background-color: rgba(255 255, 255, 0.5);
+        z-index: 5;
+        transform: translateX(100%);
 
     }
-    .freq-search {
-        width: 90%;
-        font-size: 0.5rem;
+    .main-nav>* {
+        text-decoration: none;
+        margin: 15px 10px;
+        color: white;
     }
+    body.menu-open .main-nav{
+        transform: translateX(0);
+    }
+}
 
-    .srch-gallery {
-        width: 90%;
-        
+.canvas-container {
+    width: 360px;
+    height: 360px;
+}
 
-    }
-    .paint-options{
-        gap: 20px;
-    }
+.search-gallery-container {
+    flex-direction: column;
+    gap: 20px;
+}
 
-    .gallery-container {
-        grid-template-columns: 1fr;
-        height: fit-content;
-    }
-    
+.righSide-srch {
+    width: 90%;
+    flex-direction: column;
+}
 
-    .scroll-container {
-        overflow: hidden;
-    }
+.freq-search {
+    width: 85%;
 
-    .gallery-layout {
-        width: 90vw;
-    }
+}
 
-    .main-header {
-        width: 90vw;
-    }
-    .txt-input{
-        font-size: unset;
-    }
+.freq-search {
+    width: 90%;
+    font-size: 0.5rem;
+}
 
+.srch-gallery {
+    width: 90%;
+
+
+}
+
+.paint-options {
+    gap: 20px;
+}
+
+.gallery-container {
+    grid-template-columns: 1fr;
+    height: fit-content;
+}
+
+
+.scroll-container {
+    overflow: hidden;
+}
+
+.gallery-layout {
+    width: 90vw;
+}
+
+.main-header {
+    width: 90vw;
+}
+
+.txt-input {
+    font-size: unset;
 }
 
 
 
+
+
 @media (min-width:400px) {
+
     body,
     html {
         max-width: 100%;
         height: 100vh;
         overflow-x: hidden;
     }
+
     .search-gallery-container {
         flex-direction: column;
         gap: 20px;
@@ -100,7 +129,7 @@
         width: 100%;
         height: 50%;
     }
-    
+
 
     .gallery-layout {
         width: 90vw;
@@ -134,12 +163,13 @@
     .editor-container {
         flex-direction: unset;
     }
+
     .editor-container>* {
         width: 50%;
         height: 100%;
     }
 
-    
+
 
     .righSide-srch {
         width: 55%;

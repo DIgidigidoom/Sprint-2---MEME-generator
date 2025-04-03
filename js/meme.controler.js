@@ -214,6 +214,10 @@ function renderInputTxtBox(){
   elTxtBox.value = getMeme().lines[lineIdx].txt
 }
 
+function toggleMenu(){
+    document.body.classList.toggle('menu-open')
+}
+
 
 
 
