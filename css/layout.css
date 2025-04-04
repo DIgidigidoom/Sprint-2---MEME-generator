@@ -6,9 +6,9 @@
 
 
 .main-container {
-        display: grid;
-        grid-template-columns: 10px 1fr 10px;
-    
+    display: grid;
+    grid-template-columns: 10px 1fr 10px;
+    justify-items: center;
 }
 
 .main-container>* {
@@ -31,19 +31,21 @@
 .gallery-layout {
     display: flex;
     flex-direction: column;
-
 }
+
 .gallery-layout>* {
     margin: 25px 0;
- 
- }
- .search-gallery-container{
+
+}
+
+.search-gallery-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
- }
- .freq-search{
+}
+
+.freq-search {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -69,7 +71,7 @@
 
 .editor-container>* {
     width: fit-content;
-    
+
 }
 
 .paint-options {
@@ -84,22 +86,22 @@
     display: none;
 }
 
-.main-screen{
+.main-screen {
     inset: 0;
     position: fixed;
-    background-color:rgba(0, 0, 0, 0.5) ;
+    background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s;
 }
 
-body.menu-open .main-screen{
+body.menu-open .main-screen {
     pointer-events: auto;
     opacity: 1;
 }
 
-.hamburger-btn{
+.hamburger-btn {
     margin-right: 30px;
     background-color: transparent;
     font-size: 1.5rem;
