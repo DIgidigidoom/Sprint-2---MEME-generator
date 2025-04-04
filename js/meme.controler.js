@@ -11,6 +11,7 @@ function onInitEditor() {
     onClearCanvas()
     renderMeme(gImgId)
     resizeCanvas()
+    onAddLine()
     window.addEventListener('resize', resizeCanvas)
 
 }
@@ -53,40 +54,31 @@ function drawTxt() {
     const meme = getMeme()
     const memeLines = meme.lines
     let memeLineIdx = 0
+    
     memeLines.forEach(memeLine => {
         
-        const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
-        const y = placeLines(memeLineIdx) - memeLine.size / 2;
-        const txtWidth = gCtx.measureText(memeLine.txt).width
-        const txtHeight = memeLine.size 
-        setPos(x, y, txtWidth, txtHeight, memeLineIdx)
-        
-
         gCtx.beginPath()
         gCtx.font = `${memeLine.size}px ${memeLine.font}`
         gCtx.fillStyle = memeLine.color
         gCtx.textAlign = 'center'
         gCtx.textBaseline = "middle"
-        gCtx.fillText(memeLine.txt, gElCanvas.width / 2, placeLines(memeLineIdx))
-
+        const { x, y, width, height } = getPos(memeLineIdx)
+        gCtx.fillText(memeLine.txt, x + width / 2, y + height / 2)
         
-
         memeLineIdx += 1
     })
 
-
+    
 
 }
 
 function renderLineFocus() {
-    var memes = getMeme()
-    const pos = getPos()
-    
 
+    const { x, y, width, height } = getPos()
 
     gCtx.lineWidth = 2
     gCtx.strokeStyle = "grey"
-    gCtx.strokeRect(pos.x , pos.y , pos.width , pos.height );
+    gCtx.strokeRect(x - 20, y, width + 40, height);
 
 }
 
@@ -203,15 +195,15 @@ function onFontSelect(newFont) {
     //DOM
     renderMeme(gImgId)
 }
-function onTextAlign(txtAlign){
-//Model
-const lineIdx = getLineIndex()
-textAlign(txtAlign, lineIdx)
+function onTextAlign(txtAlign) {
+    //Model
+    const lineIdx = getLineIndex()
+    textAlign(txtAlign, lineIdx)
 
-//DOM
-renderMeme(gImgId)
+    //DOM
+    renderMeme(gImgId)
 }
-function updateFontSelctor(){
+function updateFontSelctor() {
     const meme = getMeme()
     const lineIdx = getLineIndex()
     const font = meme.lines[lineIdx].font
@@ -242,7 +234,10 @@ function toggleMenu() {
 }
 
 
-
+function getCanvasPropeties() {
+    const canvasProperties = { gElCanvas, gCtx }
+    return canvasProperties
+}
 
 function onDownloadImg(elLink) {
     const imgContent = gElCanvas.toDataURL('image/jpeg')

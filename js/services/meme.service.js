@@ -7,22 +7,7 @@ var gImgs = []
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'Type Your Text Here',
-            size: 30,
-            color: 'white',
-            font :'poppins-regular',
-            alignment : 'center',
-            pos: {
-                x: 0,
-                y: 0,
-                width: 0,
-                height: 0
-
-            },
-        },
-    ]
+    lines: []
 }
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 function _createImages() {
@@ -111,20 +96,33 @@ function setLineColor(EditedColor, lineIdx) {
 function setLineSize(direction, lineIdx) {
     gMeme.lines[lineIdx].size += direction
 }
-function setTxtFont(newFont, lineIdx){
+function setTxtFont(newFont, lineIdx) {
     gMeme.lines[lineIdx].font = newFont
 }
-function textAlign(txtAlign, lineIdx){
-    gMeme.lines[lineIdx].alignment = txtAlign
+function textAlign(txtAlign, lineIdx) {
+    const currentAlign = gMeme.lines[lineIdx].alignment
+    const txtXpos = gMeme.lines[lineIdx].pos.x
+
+    if (currentAlign === txtAlign) return
+
+    if (txtAlign > currentAlign) {
+        gMeme.lines[lineIdx].pos.x += 15
+    }
+
 }
 
 function addLine() {
     if (gMeme.lines.length > 2) return
+    const lineIdx = getLineIndex()
+
+    const { gElCanvas, gCtx } = getCanvasPropeties()
+
     const newLine = {
         txt: 'Type Your Text Here',
         size: 30,
         color: getRandomColor(),
-        font :'poppins-regular',
+        font: 'poppins-regular',
+        alignment: 0,
         pos: {
             x: 0,
             y: 0,
@@ -133,11 +131,21 @@ function addLine() {
 
         },
     }
+
     gMeme.lines.push(newLine)
     toggleLineIndex()
+    const memeLine = gMeme.lines[lineIdx]
+    const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
+    const y = placeLines(getLineIndex()) - memeLine.size / 2;
+    const txtWidth = gCtx.measureText(memeLine.txt).width
+    const txtHeight = memeLine.size
+
+    setPos(x, y, txtWidth, txtHeight, getLineIndex())
+
 }
 
 function toggleLineIndex() {
+    // debugger
     if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
         gMeme.selectedLineIdx += 1
 
@@ -161,7 +169,12 @@ function setPos(x, y, width, height, memeLineIdx) {
     gMeme.lines[memeLineIdx].pos.height = height
 }
 
-function getPos(){
-    const pos = gMeme.lines[gMeme.selectedLineIdx].pos
+function getPos(tempIdx) {
+    let pos 
+    if (tempIdx != undefined) {
+         pos = gMeme.lines[tempIdx].pos
+    } else {
+         pos = gMeme.lines[gMeme.selectedLineIdx].pos
+    }
     return pos
 }
