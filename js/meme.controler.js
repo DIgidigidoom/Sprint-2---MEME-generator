@@ -6,10 +6,13 @@ var gImgId = 1
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+   
     _createImages()
     CanvasFont()
     onClearCanvas()
     renderMeme()
+    window.addEventListener('resize',resizeCanvas)
+    
 }
 //////////////////////////////// Canvas //////////////////////////////////////////
 function renderMeme(imgId = 1) {
@@ -63,7 +66,7 @@ function drawTxt() {
         const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
         const y = placeLines(memeLineIdx) - memeLine.size / 2;
         const txtWidth = gCtx.measureText(memeLine.txt).width
-        const txtHeight = memeLine.size +30
+        const txtHeight = memeLine.size + 30
         setPos(x, y, txtWidth, txtHeight, memeLineIdx)
 
         memeLineIdx += 1
@@ -72,9 +75,9 @@ function drawTxt() {
 
 
 }
-function CanvasFont(){
+function CanvasFont() {
     const font = new FontFace('Poppins-extra-bold', 'url(/fonts/Poppins-ExtraBold.ttf)');
-    font.load().then(function(loadedFont) {
+    font.load().then(function (loadedFont) {
         document.fonts.add(loadedFont);
     });
 }
@@ -88,7 +91,7 @@ function renderLineFocus() {
     const txtHeight = memes.lines[memeLineIdx].size
     gCtx.lineWidth = 2
     gCtx.strokeStyle = "grey"
-    
+
 
     const padding = 10
     gCtx.strokeRect((gElCanvas.width / 2) - txtWidth / 2 - padding, placeLines(memeLineIdx) - txtHeight / 2 - padding, txtWidth + padding * 2, txtHeight + padding * 2);
@@ -102,27 +105,31 @@ function placeLines(linePlacing) {
         case 1:
             return gElCanvas.height * 0.9
         case 2:
-            return gElCanvas.height/2
+            return gElCanvas.height / 2
 
     }
 }
 
 function onSelectTxt(ev) {
     const pos = getEvPos(ev)
-    
+
     const memeLines = getMeme().lines
 
     const clickedTxtLineIndx = memeLines.findIndex(line =>
-        pos.x >= line.pos.x && pos.x<= (line.pos.x + line.pos.width) &&
+        pos.x >= line.pos.x && pos.x <= (line.pos.x + line.pos.width) &&
         pos.y >= line.pos.y && pos.y <= (line.pos.y + line.pos.height)
         // pos.offsetX >= line.pos.x && pos.offsetX <= (line.pos.x + line.pos.width) &&
         // pos.offsetY >= line.pos.y && pos.offsetY <= (line.pos.y + line.pos.height)
     )
     console.log(clickedTxtLineIndx)
-   
+
     if (clickedTxtLineIndx >= 0) {
         setLineIndex(clickedTxtLineIndx)
     }
+    console.log(pos)
+    console.log(getMeme().lines)
+    console.log(gElCanvas.width)
+    console.log(gElCanvas.height)
 
     renderMeme(gImgId)
 
@@ -134,7 +141,7 @@ function onChangeText(editedTxt) {
 
     //Model
     const lineIdx = getLineIndex()
-    setLineTxt(editedTxt,lineIdx)
+    setLineTxt(editedTxt, lineIdx)
 
     //DOM
     renderMeme(gImgId)
@@ -143,7 +150,7 @@ function onChangeText(editedTxt) {
 function onSetColorFill(EditedColor) {
     //Model
     const lineIdx = getLineIndex()
-    setLineColor(EditedColor,lineIdx)
+    setLineColor(EditedColor, lineIdx)
 
     //DOM
     renderMeme(gImgId)
@@ -152,7 +159,7 @@ function onSetColorFill(EditedColor) {
 function onChangeFontSize(direction) {
     //Model
     const lineIdx = getLineIndex()
-    setLineSize(direction,lineIdx)
+    setLineSize(direction, lineIdx)
 
     //DOM
     renderMeme(gImgId)
@@ -160,7 +167,7 @@ function onChangeFontSize(direction) {
 
 function onAddLine() {
     //Model
-    
+
     addLine()
 
     //DOM 
@@ -208,13 +215,13 @@ function onToggleLinesFocus() {
 
 }
 
-function renderInputTxtBox(){
-  const elTxtBox =  document.querySelector('.txt-input')
-  const lineIdx = getLineIndex()
-  elTxtBox.value = getMeme().lines[lineIdx].txt
+function renderInputTxtBox() {
+    const elTxtBox = document.querySelector('.txt-input')
+    const lineIdx = getLineIndex()
+    elTxtBox.value = getMeme().lines[lineIdx].txt
 }
 
-function toggleMenu(){
+function toggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
