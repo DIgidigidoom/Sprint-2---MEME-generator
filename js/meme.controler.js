@@ -3,6 +3,8 @@ var gElCanvas
 var gCtx
 var gElImage
 var gImgId = 1
+
+
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -82,13 +84,19 @@ function renderLineFocus() {
 
 }
 
-function placeLines(linePlacing) {
-    switch (linePlacing) {
+function placeLines() {
+    const AvailableLines = getAvailableLines()
+    const index = AvailableLines.findIndex(line => line === true)
+
+    switch (index) {
         case 0:
+            setAvailableLines(index,false)
             return gElCanvas.height * 0.1
         case 1:
+            setAvailableLines(index,false)
             return gElCanvas.height * 0.9
         case 2:
+            setAvailableLines(index,false)
             return gElCanvas.height / 2
 
     }
@@ -207,19 +215,19 @@ function onTextAlign(txtAlign) {
 function onMoveText(direction) {
     //Model
     const lineIdx = getLineIndex()
-    moveText(direction,lineIdx)
+    moveText(direction, lineIdx)
 
     //DOM
     renderMeme(gImgId)
 }
 
-function onDltLine(){
-     //Model
-     const lineIdx = getLineIndex()
-     dltLine(lineIdx)
- 
-     //DOM
-     renderMeme(gImgId)
+function onDltLine() {
+    //Model
+    const lineIdx = getLineIndex()
+    dltLine(lineIdx)
+
+    //DOM
+    renderMeme(gImgId)
 
 }
 function updateFontSelctor() {

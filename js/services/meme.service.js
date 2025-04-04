@@ -1,5 +1,6 @@
 'use strict'
 const IMG_STORAGE = 'imageDB'
+let gAvailableLines = [true, true, true]
 var gImgs = []
 
 
@@ -104,7 +105,7 @@ function textAlign(txtAlign, lineIdx) {
     const txtXpos = gMeme.lines[lineIdx].pos.x
 
     if (currentAlign === txtAlign) return
-    // debugger
+
     if (currentAlign === 0) {
         if (txtAlign === 1) {
             gMeme.lines[lineIdx].pos.x += 15
@@ -139,10 +140,14 @@ function moveText(direction, lineIdx) {
 
 function dltLine(lineIdx){
     gMeme.lines.splice(lineIdx, 1)
+    setAvailableLines(lineIdx,true)
+    setLineIndex(0)
+    
 }
 
 function addLine() {
     if (gMeme.lines.length > 2) return
+    
     const lineIdx = getLineIndex()
 
     const { gElCanvas, gCtx } = getCanvasPropeties()
@@ -166,16 +171,15 @@ function addLine() {
     toggleLineIndex()
     const memeLine = gMeme.lines[lineIdx]
     const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
-    const y = placeLines(getLineIndex()) - memeLine.size / 2;
+    const y = placeLines() - memeLine.size / 2;
     const txtWidth = gCtx.measureText(memeLine.txt).width
     const txtHeight = memeLine.size
 
     setPos(x, y, txtWidth, txtHeight, getLineIndex())
-
+    
 }
 
 function toggleLineIndex() {
-    // debugger
     if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
         gMeme.selectedLineIdx += 1
 
@@ -207,4 +211,10 @@ function getPos(tempIdx) {
         pos = gMeme.lines[gMeme.selectedLineIdx].pos
     }
     return pos
+}
+function getAvailableLines(){
+    return gAvailableLines
+}
+function setAvailableLines(idx,bool){
+    gAvailableLines[idx] = bool
 }
