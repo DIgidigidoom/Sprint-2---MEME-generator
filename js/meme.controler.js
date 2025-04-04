@@ -11,6 +11,7 @@ function onInitEditor() {
     CanvasFont()
     onClearCanvas()
     renderMeme()
+    resizeCanvas()
     window.addEventListener('resize',resizeCanvas)
     
 }

@@ -24,7 +24,7 @@
             </nav>
             <button class="hamburger-btn" onclick="toggleMenu()">☰</button>
         </div>
-        <div class="gallery-layout">
+        <div class="gallery-layout hide ">
             <div class="search-gallery-container">
                 <input class="srch-gallery" placeholder="Search" type="text">
                 <div class="righSide-srch">
@@ -42,9 +42,9 @@
                 <div class="gallery-container"></div>
             </div>
         </div>
-        <div class="editor-container hide ">
+        <div class="editor-container">
             <div class="canvas-container">
-                <canvas  onmousedown="onSelectTxt(event)" ontouchstart="onSelectTxt(event)">
+                <canvas width="450" height="450" onmousedown="onSelectTxt(event)" ontouchstart="onSelectTxt(event)">
                 </canvas>
             </div>
             <div class="paint-options">
