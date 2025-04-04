@@ -202,7 +202,10 @@ html {
 
 .text-edit-row {
     width: fit-content;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
     flex-flow: wrap;
 }
 
@@ -210,10 +213,16 @@ html {
     width: 60px;
     height: 60px;
     border-radius: 5px;
-    margin: auto 5px;
+    
     border: none;
     cursor: pointer;
     background-color: #f2f7f4;
+}
+#font-selctor{
+    grid-column: 4/6;
+    width: unset;
+    font-size: 1.2rem;
+    
 }
 
 
