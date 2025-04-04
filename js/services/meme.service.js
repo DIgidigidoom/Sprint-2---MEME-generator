@@ -12,6 +12,8 @@ var gMeme = {
             txt: 'Type Your Text Here',
             size: 30,
             color: 'white',
+            font :'poppins-regular',
+            alignment : 'center',
             pos: {
                 x: 0,
                 y: 0,
@@ -109,6 +111,12 @@ function setLineColor(EditedColor, lineIdx) {
 function setLineSize(direction, lineIdx) {
     gMeme.lines[lineIdx].size += direction
 }
+function setTxtFont(newFont, lineIdx){
+    gMeme.lines[lineIdx].font = newFont
+}
+function textAlign(txtAlign, lineIdx){
+    gMeme.lines[lineIdx].alignment = txtAlign
+}
 
 function addLine() {
     if (gMeme.lines.length > 2) return
@@ -116,6 +124,7 @@ function addLine() {
         txt: 'Type Your Text Here',
         size: 40,
         color: getRandomColor(),
+        font :'poppins-regular',
         pos: {
             x: 0,
             y: 0,

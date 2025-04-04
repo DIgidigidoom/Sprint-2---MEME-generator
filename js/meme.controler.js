@@ -6,14 +6,13 @@ var gImgId = 1
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-   
+
     _createImages()
-    CanvasFont()
     onClearCanvas()
-    renderMeme()
+    renderMeme(gImgId)
     resizeCanvas()
-    window.addEventListener('resize',resizeCanvas)
-    
+    window.addEventListener('resize', resizeCanvas)
+
 }
 //////////////////////////////// Canvas //////////////////////////////////////////
 function renderMeme(imgId = 1) {
@@ -30,7 +29,7 @@ function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.clientWidth
     gElCanvas.height = elContainer.clientHeight
-    renderMeme()
+    renderMeme(gImgId)
 }
 
 function drawImageOnCanvas(gImgId) {
@@ -55,14 +54,6 @@ function drawTxt() {
     const memeLines = meme.lines
     let memeLineIdx = 0
     memeLines.forEach(memeLine => {
-        gCtx.beginPath()
-        gCtx.font = `${memeLine.size}px Poppins-extra-bold`
-        gCtx.fillStyle = memeLine.color
-        gCtx.textAlign = "center"
-        gCtx.textBaseline = "middle"
-        gCtx.fillText(memeLine.txt, gElCanvas.width / 2, placeLines(memeLineIdx))
-
-
 
         const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
         const y = placeLines(memeLineIdx) - memeLine.size / 2;
@@ -70,18 +61,21 @@ function drawTxt() {
         const txtHeight = memeLine.size + 30
         setPos(x, y, txtWidth, txtHeight, memeLineIdx)
 
+
+        gCtx.beginPath()
+        gCtx.font = `${memeLine.size}px ${memeLine.font}`
+        gCtx.fillStyle = memeLine.color
+        gCtx.textAlign = memeLine.alignment
+        gCtx.textBaseline = "middle"
+        gCtx.fillText(memeLine.txt, gElCanvas.width / 2, placeLines(memeLineIdx))
+
         memeLineIdx += 1
     })
 
 
 
 }
-function CanvasFont() {
-    const font = new FontFace('Poppins-extra-bold', 'url(/fonts/Poppins-ExtraBold.ttf)');
-    font.load().then(function (loadedFont) {
-        document.fonts.add(loadedFont);
-    });
-}
+
 function renderLineFocus() {
     var memes = getMeme()
     // console.log(memes.lines)
@@ -131,7 +125,7 @@ function onSelectTxt(ev) {
     console.log(getMeme().lines)
     console.log(gElCanvas.width)
     console.log(gElCanvas.height)
-
+    updateFontSelctor()
     renderMeme(gImgId)
 
 }
@@ -202,6 +196,30 @@ function getEvPos(ev) {
         }
     }
     return pos
+}
+
+function onFontSelect(newFont) {
+    //Model
+    const lineIdx = getLineIndex()
+    setTxtFont(newFont, lineIdx)
+
+    //DOM
+    renderMeme(gImgId)
+}
+function onTextAlign(txtAlign){
+//Model
+const lineIdx = getLineIndex()
+textAlign(txtAlign, lineIdx)
+
+//DOM
+renderMeme(gImgId)
+}
+function updateFontSelctor(){
+    const meme = getMeme()
+    const lineIdx = getLineIndex()
+    const font = meme.lines[lineIdx].font
+    const dropdown = document.getElementById("font-selctor");
+    dropdown.value = font;
 }
 
 function onToggleLinesFocus() {

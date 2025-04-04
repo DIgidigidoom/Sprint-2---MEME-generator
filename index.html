@@ -60,6 +60,15 @@
                 <div class="text-edit-row">
                     <button class="btn font-size-btn" onclick="onChangeFontSize(1)">🗚</button>
                     <button class="btn font-size-btn" onclick="onChangeFontSize(-1)">🗛</button>
+                    <select id="font-selctor" name="font-selctor" onchange="onFontSelect(this.value)">
+                        <option class="font-selector-regular" value="poppins-regular">Regular</option>
+                        <option class="font-selector-Extra Bold" value="poppins-extra-bold">Extra Bold</option>
+                        <option class="font-selector-light" value="poppins-light">Light</option>
+                        <option class="font-selector-italic" value="poppins-italic">Italic</option>
+                      </select>
+                    <button class="btn text-align-left" onclick="onTextAlign('left')"><span class="fa-solid fa-align-left"></span></button>
+                    <button class="btn text-align-center" onclick="onTextAlign('center')"> <span class="fa-solid fa-align-justify"></span></button>
+                    <button class="btn text-align-right" onclick="onTextAlign('right')"><span class="fa-solid fa-align-right"></span></button>
                     <div class="pallete-div">
 
                         <label class="pallete-icon" for="colorPicker">
@@ -86,6 +95,7 @@
     <script src="js/services/meme.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/services/utils.service.js"></script>
+    <script src="https://kit.fontawesome.com/2e1a5f1033.js" crossorigin="anonymous"></script>
 
 </body>
 

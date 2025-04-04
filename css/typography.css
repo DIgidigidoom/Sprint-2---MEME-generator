@@ -10,3 +10,7 @@
     font-family: poppins-light;
     src: url('/fonts/Poppins-Light.ttf');
   }
+@font-face {
+    font-family: poppins-italic;
+    src: url('/fonts/Poppins-Italic.ttf');
+  }

@@ -203,6 +203,7 @@ html {
 .text-edit-row {
     width: fit-content;
     display: flex;
+    flex-flow: wrap;
 }
 
 .text-edit-row>* {
