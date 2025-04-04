@@ -54,9 +54,9 @@ function drawTxt() {
     const meme = getMeme()
     const memeLines = meme.lines
     let memeLineIdx = 0
-    
+
     memeLines.forEach(memeLine => {
-        
+
         gCtx.beginPath()
         gCtx.font = `${memeLine.size}px ${memeLine.font}`
         gCtx.fillStyle = memeLine.color
@@ -64,16 +64,16 @@ function drawTxt() {
         gCtx.textBaseline = "middle"
         const { x, y, width, height } = getPos(memeLineIdx)
         gCtx.fillText(memeLine.txt, x + width / 2, y + height / 2)
-        
+
         memeLineIdx += 1
     })
 
-    
+
 
 }
 
 function renderLineFocus() {
-
+    
     const { x, y, width, height } = getPos()
 
     gCtx.lineWidth = 2

@@ -104,11 +104,29 @@ function textAlign(txtAlign, lineIdx) {
     const txtXpos = gMeme.lines[lineIdx].pos.x
 
     if (currentAlign === txtAlign) return
-
-    if (txtAlign > currentAlign) {
-        gMeme.lines[lineIdx].pos.x += 15
+    // debugger
+    if (currentAlign === 0) {
+        if (txtAlign === 1) {
+            gMeme.lines[lineIdx].pos.x += 15
+        } else if (txtAlign = -1) {
+            gMeme.lines[lineIdx].pos.x -= 15
+        }
+    } else if (currentAlign === 1) {
+        if (txtAlign === 0) {
+            gMeme.lines[lineIdx].pos.x -= 15
+        } else if (txtAlign === -1) {
+            gMeme.lines[lineIdx].pos.x -= 30
+        }
+    }else if (currentAlign === -1) {
+        if (txtAlign === 0) {
+            gMeme.lines[lineIdx].pos.x += 15
+        } else if (txtAlign === -1) {
+            gMeme.lines[lineIdx].pos.x += 30
+        }
     }
 
+    gMeme.lines[lineIdx].alignment = txtAlign
+    
 }
 
 function addLine() {
@@ -170,11 +188,11 @@ function setPos(x, y, width, height, memeLineIdx) {
 }
 
 function getPos(tempIdx) {
-    let pos 
+    let pos
     if (tempIdx != undefined) {
-         pos = gMeme.lines[tempIdx].pos
+        pos = gMeme.lines[tempIdx].pos
     } else {
-         pos = gMeme.lines[gMeme.selectedLineIdx].pos
+        pos = gMeme.lines[gMeme.selectedLineIdx].pos
     }
     return pos
 }
