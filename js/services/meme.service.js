@@ -150,7 +150,7 @@ function addLine() {
     
     const lineIdx = getLineIndex()
 
-    const { gElCanvas, gCtx } = getCanvasPropeties()
+    
 
     const newLine = {
         txt: 'Type Your Text Here',
@@ -169,13 +169,14 @@ function addLine() {
 
     gMeme.lines.push(newLine)
     toggleLineIndex()
-    const memeLine = gMeme.lines[lineIdx]
-    const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
-    const y = placeLines() - memeLine.size / 2;
-    const txtWidth = gCtx.measureText(memeLine.txt).width
-    const txtHeight = memeLine.size
+    // const memeLine = gMeme.lines[lineIdx]
+    // const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
+    // const y = placeLines() - memeLine.size / 2;
+    // const txtWidth = gCtx.measureText(memeLine.txt).width
+    // const txtHeight = memeLine.size
 
-    setPos(x, y, txtWidth, txtHeight, getLineIndex())
+    setPos(getLineIndex())
+    // setPos(x, y, txtWidth, txtHeight, getLineIndex())
     
 }
 
@@ -196,11 +197,13 @@ function getLineIndex() {
     return gMeme.selectedLineIdx
 }
 
-function setPos(x, y, width, height, memeLineIdx) {
-    gMeme.lines[memeLineIdx].pos.x = x
-    gMeme.lines[memeLineIdx].pos.y = y
-    gMeme.lines[memeLineIdx].pos.width = width
-    gMeme.lines[memeLineIdx].pos.height = height
+function setPos(memeLineIdx) {
+    const { gElCanvas, gCtx } = getCanvasPropeties()
+    const memeLine = gMeme.lines[memeLineIdx]
+    gMeme.lines[memeLineIdx].pos.x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
+    gMeme.lines[memeLineIdx].pos.y = placeLines() - memeLine.size / 2;
+    gMeme.lines[memeLineIdx].pos.width = gCtx.measureText(memeLine.txt).width
+    gMeme.lines[memeLineIdx].pos.height = memeLine.size
 }
 
 function getPos(tempIdx) {

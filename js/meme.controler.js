@@ -8,11 +8,12 @@ var gImgId = 1
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-
+    
     _createImages()
     onClearCanvas()
-    renderMeme(gImgId)
     resizeCanvas()
+    renderMeme(gImgId)
+    
     onAddLine()
     window.addEventListener('resize', resizeCanvas)
 
@@ -32,7 +33,9 @@ function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.clientWidth
     gElCanvas.height = elContainer.clientHeight
+    
     renderMeme(gImgId)
+    // setPos(getLineIndex())
 }
 
 function drawImageOnCanvas(gImgId) {
