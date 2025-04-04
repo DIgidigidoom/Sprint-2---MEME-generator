@@ -73,7 +73,7 @@ function drawTxt() {
 }
 
 function renderLineFocus() {
-    
+
     const { x, y, width, height } = getPos()
 
     gCtx.lineWidth = 2
@@ -202,6 +202,25 @@ function onTextAlign(txtAlign) {
 
     //DOM
     renderMeme(gImgId)
+}
+
+function onMoveText(direction) {
+    //Model
+    const lineIdx = getLineIndex()
+    moveText(direction,lineIdx)
+
+    //DOM
+    renderMeme(gImgId)
+}
+
+function onDltLine(){
+     //Model
+     const lineIdx = getLineIndex()
+     dltLine(lineIdx)
+ 
+     //DOM
+     renderMeme(gImgId)
+
 }
 function updateFontSelctor() {
     const meme = getMeme()

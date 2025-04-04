@@ -117,7 +117,7 @@ function textAlign(txtAlign, lineIdx) {
         } else if (txtAlign === -1) {
             gMeme.lines[lineIdx].pos.x -= 30
         }
-    }else if (currentAlign === -1) {
+    } else if (currentAlign === -1) {
         if (txtAlign === 0) {
             gMeme.lines[lineIdx].pos.x += 15
         } else if (txtAlign === -1) {
@@ -126,7 +126,19 @@ function textAlign(txtAlign, lineIdx) {
     }
 
     gMeme.lines[lineIdx].alignment = txtAlign
-    
+
+}
+
+function moveText(direction, lineIdx) {
+    if (direction === 'up') {
+        gMeme.lines[lineIdx].pos.y -= 15
+    } else {
+        gMeme.lines[lineIdx].pos.y += 15
+    }
+}
+
+function dltLine(lineIdx){
+    gMeme.lines.splice(lineIdx, 1)
 }
 
 function addLine() {
