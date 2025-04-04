@@ -54,20 +54,22 @@ function drawTxt() {
     const memeLines = meme.lines
     let memeLineIdx = 0
     memeLines.forEach(memeLine => {
-
+        
         const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
         const y = placeLines(memeLineIdx) - memeLine.size / 2;
         const txtWidth = gCtx.measureText(memeLine.txt).width
-        const txtHeight = memeLine.size + 30
+        const txtHeight = memeLine.size 
         setPos(x, y, txtWidth, txtHeight, memeLineIdx)
-
+        
 
         gCtx.beginPath()
         gCtx.font = `${memeLine.size}px ${memeLine.font}`
         gCtx.fillStyle = memeLine.color
-        gCtx.textAlign = memeLine.alignment
+        gCtx.textAlign = 'center'
         gCtx.textBaseline = "middle"
         gCtx.fillText(memeLine.txt, gElCanvas.width / 2, placeLines(memeLineIdx))
+
+        
 
         memeLineIdx += 1
     })
@@ -78,18 +80,13 @@ function drawTxt() {
 
 function renderLineFocus() {
     var memes = getMeme()
-    // console.log(memes.lines)
-    // console.log(memes.selectedLineIdx)
-    // console.log(memes.lines[memes.selectedLineIdx])
-    const memeLineIdx = getLineIndex()
-    const txtWidth = gCtx.measureText(memes.lines[memeLineIdx].txt).width
-    const txtHeight = memes.lines[memeLineIdx].size
+    const pos = getPos()
+    
+
+
     gCtx.lineWidth = 2
     gCtx.strokeStyle = "grey"
-
-
-    const padding = 10
-    gCtx.strokeRect((gElCanvas.width / 2) - txtWidth / 2 - padding, placeLines(memeLineIdx) - txtHeight / 2 - padding, txtWidth + padding * 2, txtHeight + padding * 2);
+    gCtx.strokeRect(pos.x , pos.y , pos.width , pos.height );
 
 }
 

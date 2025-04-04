@@ -122,7 +122,7 @@ function addLine() {
     if (gMeme.lines.length > 2) return
     const newLine = {
         txt: 'Type Your Text Here',
-        size: 40,
+        size: 30,
         color: getRandomColor(),
         font :'poppins-regular',
         pos: {
@@ -159,4 +159,9 @@ function setPos(x, y, width, height, memeLineIdx) {
     gMeme.lines[memeLineIdx].pos.y = y
     gMeme.lines[memeLineIdx].pos.width = width
     gMeme.lines[memeLineIdx].pos.height = height
+}
+
+function getPos(){
+    const pos = gMeme.lines[gMeme.selectedLineIdx].pos
+    return pos
 }
