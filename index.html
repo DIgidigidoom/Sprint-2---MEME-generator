@@ -51,7 +51,7 @@
         </div>
         <div class="editor-container">
             <div class="canvas-container">
-                <canvas width="450" height="450" onmousedown="onSelectTxt(event)" ontouchstart="onSelectTxt(event)">
+                <canvas width="450" height="450" onmousedown="onDown(event)" ontouchstart="onDown(event)">
                 </canvas>
             </div>
             <div class="paint-options">
@@ -89,6 +89,11 @@
                         <option class="font-selector-light" value="poppins-light">Light</option>
                         <option class="font-selector-italic" value="poppins-italic">Italic</option>
                       </select>
+                </div>
+                <div class="emojis">
+                    <label>😃<input type="radio" name="emoji" value="happy" onchange="onEmojiSelected(this.value)"></label>
+                    <label>😎<input type="radio" name="emoji" value="cool" onchange="onEmojiSelected(this.value)"></label>
+                    <label>🥶<input type="radio" name="emoji" value="frozen" onchange="onEmojiSelected(this.value)"></label>
                 </div>
                 <div class="share-row">
                     <a href="#" class="btn download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download <span class="fa-solid fa-download"></span></a>

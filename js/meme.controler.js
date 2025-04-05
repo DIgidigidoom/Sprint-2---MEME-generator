@@ -3,7 +3,8 @@ var gElCanvas
 var gCtx
 var gElImage
 var gImgId = 1
-
+var gEmojiMode = false
+var gEmoji
 
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
@@ -29,9 +30,9 @@ function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.clientWidth
     gElCanvas.height = elContainer.clientHeight
-     // setPos(getLineIndex())
+    // setPos(getLineIndex())
     renderMeme(gImgId)
-    
+
 }
 
 function drawImageOnCanvas(gImgId) {
@@ -41,10 +42,11 @@ function drawImageOnCanvas(gImgId) {
 
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+
         drawTxt()
         renderLineFocus()
         renderInputTxtBox()
-
+        drawEmoji()
 
     }
 
@@ -65,7 +67,7 @@ function drawTxt() {
         gCtx.textBaseline = "middle"
         const { x, y, width, height } = getPos(memeLineIdx)
         gCtx.fillText(memeLine.txt, x + width / 2, y + height / 2)
-        
+
         memeLineIdx += 1
     })
 
@@ -84,12 +86,12 @@ function renderLineFocus() {
 }
 
 function placeLines(lineIdx) {
-   
+
     switch (lineIdx) {
         case 0:
             return gElCanvas.height * 0.1
         case 1:
-            
+
             return gElCanvas.height * 0.9
         default:
 
@@ -97,29 +99,33 @@ function placeLines(lineIdx) {
 
     }
 }
-
-function onSelectTxt(ev) {
+function onDown(ev) {
     const pos = getEvPos(ev)
+    if (gEmojiMode) {
+        addEmoji(pos)
+    }
+
+    onSelectTxt(ev, pos)
+    renderMeme(gImgId)
+}
+function onSelectTxt(ev, pos) {
+    // const pos = getEvPos(ev)
 
     const memeLines = getMeme().lines
 
     const clickedTxtLineIndx = memeLines.findIndex(line =>
         pos.x >= line.pos.x && pos.x <= (line.pos.x + line.pos.width) &&
         pos.y >= line.pos.y && pos.y <= (line.pos.y + line.pos.height)
-        // pos.offsetX >= line.pos.x && pos.offsetX <= (line.pos.x + line.pos.width) &&
-        // pos.offsetY >= line.pos.y && pos.offsetY <= (line.pos.y + line.pos.height)
     )
     console.log(clickedTxtLineIndx)
 
     if (clickedTxtLineIndx >= 0) {
         setLineIndex(clickedTxtLineIndx)
     }
-    console.log(pos)
-    console.log(getMeme().lines)
-    console.log(gElCanvas.width)
-    console.log(gElCanvas.height)
+
     updateFontSelctor()
-    renderMeme(gImgId)
+
+
 
 }
 
@@ -157,7 +163,7 @@ function onAddLine() {
     //Model
     toggleLineIndex()
     addLine()
-
+    
     //DOM 
     renderMeme(gImgId)
 }
@@ -262,12 +268,48 @@ function getCanvasPropeties() {
     const canvasProperties = { gElCanvas, gCtx }
     return canvasProperties
 }
+function onEmojiSelected(emoji) {
+    gEmojiMode = true
+    switch (emoji) {
+        case 'happy':
+            gEmoji = '😃'
+            break
+        case 'cool':
+            gEmoji = '😎'
+            break
+        case 'frozen':
+            gEmoji = '🥶'
+            break
+    }
+}
 
+function drawEmoji(ev, pos) {
+    const emojis = getEmojis()
+    const emoji = emojis.emoji
+    emoji.forEach(em => {
+        const x = em.pos.x
+        const y = em.pos.y
+        gCtx.beginPath()
+        gCtx.font = "40px Arial";
+        gCtx.textAlign = "center";
+        gCtx.textBaseline = "middle";
+
+        gCtx.fillText(em.type, x, y);
+    })
+    clearEmojiSelection()
+}
+
+function clearEmojiSelection() {
+    document.querySelectorAll('.emojis input[type="radio"]').forEach(radio => {
+        radio.checked = false
+    })
+    gEmojiMode = false
+}
 function onDownloadImg(elLink) {
     const imgContent = gElCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
 }
-function onSaveImg(){
+function onSaveImg() {
     const canvasData = gElCanvas.toDataURL('image/jpeg')
     addImg(canvasData)
 }
