@@ -1,5 +1,5 @@
 'use strict'
-var gIsSavedImgs = true
+var gIsSavedImgs = false
 
 
 function onInitGallery() {
@@ -39,11 +39,12 @@ function onOpenGallery(bool) {
 function onSelectImg(imgId) {
     let elEditor = document.querySelector('.editor-container')
     let elGallery = document.querySelector('.gallery-layout')
-    let elinputTxt = document.querySelector('.txt-input')
-    elinputTxt.value = 'Type Your Text Here'
+
     onClearCanvas()
+
     elEditor.classList.remove('hide')
     elGallery.classList.add('hide')
+    
     renderMeme(imgId)
 
 

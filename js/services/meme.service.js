@@ -41,21 +41,21 @@ function _createImages() {
         saveToStorage(IMG_STORAGE, gImgs)
     }
     if (!gSavedImgs || !gSavedImgs.length) {
-        gSavedImgs=[
-        { id: 1, url: 'Images/saved_1.jpg', keywords: ['funny', 'cat'] },
-        { id: 2, url: 'Images/saved_2.jpg', keywords: ['funny', 'cat'] },
-        { id: 3, url: 'Images/saved_3.jpg', keywords: ['funny', 'cat'] },
+        gSavedImgs = [
+            { id: 1, url: 'Images/saved_1.jpg', keywords: ['funny', 'cat'] },
+            { id: 2, url: 'Images/saved_2.jpg', keywords: ['funny', 'cat'] },
+            { id: 3, url: 'Images/saved_3.jpg', keywords: ['funny', 'cat'] },
         ]
         saveToStorage(IMG_SAVED_STORAGE, gSavedImgs)
     }
 }
 function getImgs() {
-    if(!gIsSavedImgs){
+    if (!gIsSavedImgs) {
         return gImgs
-    }else{
+    } else {
         return gSavedImgs
     }
-    
+
 }
 function getMeme() {
     return gMeme
@@ -83,22 +83,23 @@ function resetMeme() {
     return gMeme
 }
 
-function createImg() {
-    return {
-        id: 1,
-        url:
-            'img/1.jpg',
+function addImg(savedImg) {
+    const newImg = {
+        id: gSavedImgs.length + 1,
+        url: savedImg,
         keywords: ['funny', 'cat']
     }
+    gSavedImgs.push(newImg)
+    saveToStorage(IMG_SAVED_STORAGE, gSavedImgs)
 }
 
 function getImgById(imgId) {
-    if(!gIsSavedImgs){
+    if (!gIsSavedImgs) {
         return gImgs.find(img => imgId === img.id)
-    }else{
+    } else {
         return gSavedImgs.find(img => imgId === img.id)
     }
-    
+
 }
 function getMemeById(imgId) {
     debugger
@@ -186,7 +187,7 @@ function addLine() {
     }
 
     gMeme.lines.push(newLine)
-    
+
 
 
     setPos(getLineIndex())
