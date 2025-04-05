@@ -11,9 +11,6 @@ function onInitEditor() {
     addLine()
     onClearCanvas()
     resizeCanvas()
-    // renderMeme(gImgId)
-
-    // onAddLine()
     window.addEventListener('resize', resizeCanvas)
 
 }

@@ -3,8 +3,18 @@ var gIsSavedImgs = false
 
 
 function onInitGallery() {
+    document.querySelector('.srch-gallery').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            const filterValue = e.target.value
+            updateSearchCount(this.value)
+        }
+    })
+    
     _createImages()
     renderImgs()
+    createPopularSrchs()
+    sortSrchMap()
+    updateTopFiveSrchs()
 }
 
 function renderImgs(filteredImgs) {
@@ -75,6 +85,27 @@ function onFilterGallery(filter) {
     const cleanFilter = filter.toLowerCase().trim();
     let filteredImges = imgs.filter(img =>
         img.keywords.some(kw => kw.includes(cleanFilter)))
-    
+
     renderImgs(filteredImges)
+}
+
+function updateTopFiveSrchs() {
+    let innerHTML = ''
+    let idx = 1
+    gTopFiveKeys.forEach(srch => {
+        const elFreqSrch = document.querySelector(`.freq-srch-${idx}`)
+            innerHTML = srch[0]
+            elFreqSrch.innerHTML = innerHTML
+            elFreqSrch.style.fontSize = `${srch[1]*2}px`
+        idx += 1
+    });
+   
+}
+
+function onChooseFreqSrch(idx){
+    const txtPressed = document.querySelector(`.freq-srch-${idx}`).innerHTML
+    document.querySelector('.srch-gallery').value = ''
+    document.querySelector('.srch-gallery').value = txtPressed
+    updateSearchCount(txtPressed)
+    onFilterGallery(txtPressed)
 }
