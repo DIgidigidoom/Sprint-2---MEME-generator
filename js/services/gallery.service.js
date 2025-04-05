@@ -39,6 +39,6 @@ function sortSrchMap() {
     const sorted = srchMap.sort((a, b) => b[1] - a[1])
     const sliced = sorted.slice(0, 5)
     gTopFiveKeys = sliced.map((key, val) => key)
-    console.log(gTopFiveKeys)
 }
+
 

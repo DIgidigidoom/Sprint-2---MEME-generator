@@ -9,12 +9,16 @@ function onInitGallery() {
             updateSearchCount(this.value)
         }
     })
+    document.querySelector('.srch-gallery').addEventListener('change', function () {
+        updateSearchCount(this.value)
+      })
     
     _createImages()
     renderImgs()
     createPopularSrchs()
     sortSrchMap()
     updateTopFiveSrchs()
+    setDataList()
 }
 
 function renderImgs(filteredImgs) {
@@ -100,6 +104,14 @@ function updateTopFiveSrchs() {
         idx += 1
     });
    
+}
+function setDataList(){
+    let idx = 1
+    gTopFiveKeys.forEach(srch => {
+        const elDataList = document.querySelector(`.data-list-${idx}`)
+        elDataList.value = srch[0]
+        idx += 1
+    });
 }
 
 function onChooseFreqSrch(idx){

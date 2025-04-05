@@ -26,7 +26,14 @@
         </div>
         <div class="gallery-layout hide ">
             <div class="search-gallery-container">
-                <input class="srch-gallery" placeholder="Search" type="text" oninput="onFilterGallery(this.value)">
+                <input class="srch-gallery" placeholder="Search" type="text" oninput="onFilterGallery(this.value)" list="browsers">
+                <datalist id="browsers" >
+                    <option class="data-list-1" value="hair">
+                    <option class="data-list-2" value="Firefox">
+                    <option class="data-list-3" value="Google Chrome">
+                    <option class="data-list-4" value="Opera">
+                    <option class="data-list-5" value="Safari">
+                  </datalist>
                 <div class="righSide-srch">
                     <div class="freq-search">
                         <h2 class="btn freq-srch-1" onclick="onChooseFreqSrch(1)"></h2>
