@@ -26,6 +26,11 @@ html {
     font-size: 1.3125rem;
     color: white;
 }
+.btn:hover,
+a:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
 
 .main-nav {
     font-family: poppins-regular;

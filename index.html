@@ -18,8 +18,8 @@
         <div class="main-header">
             <h1 class="logo">LOGO</h1>
             <nav class="main-nav">
-                <a class="nav-gallery" href="#" onclick="onOpenGallery()">Gallery</a>
-                <a class="nav-saved" href="#">Saved</a>
+                <a class="nav-gallery" href="#" onclick="onOpenGallery(false)">Gallery</a>
+                <a class="nav-saved" href="#" onclick="onOpenGallery(true)">Saved</a>
                 <a class="nav-about" href="#">About</a>
             </nav>
             <button class="hamburger-btn" onclick="toggleMenu()">☰</button>
@@ -35,7 +35,7 @@
                         <h2>blah</h2>
                         <h2>blah</h2>
                     </div>
-                    <button class="more-btn">More</button>
+                    <button class="btn more-btn" onclick="onRandomizeMeme()">Rand</button>
                 </div>
             </div>
             <div class="scroll-container">
@@ -68,7 +68,7 @@
                     <button class="btn text-move-up" onclick="onMoveText('up')"><span class="fa-solid fa-up-long"></span></button>
                     <button class="btn text-move-down" onclick="onMoveText('down')"><span class="fa-solid fa-down-long"></span></button>
                     
-                    <div class="pallete-div">
+                    <div class="btn pallete-div">
 
                         <label class="pallete-icon" for="colorPicker">
                             <span>🎨</span>
@@ -77,7 +77,7 @@
                         <input class="color-pallete" type="color" id="colorPicker" value="#FFFFFF"
                             style="visibility: hidden;" onchange="onSetColorFill(this.value)">
                     </div>
-                    <select id="font-selctor" name="font-selctor" onchange="onFontSelect(this.value)">
+                    <select class="btn" id="font-selctor" name="font-selctor" onchange="onFontSelect(this.value)">
                         <option class="font-selector-regular" value="poppins-regular">Regular</option>
                         <option class="font-selector-Extra Bold" value="poppins-extra-bold">Extra Bold</option>
                         <option class="font-selector-light" value="poppins-light">Light</option>
@@ -85,7 +85,8 @@
                       </select>
                 </div>
                 <div class="share-row">
-                    <a href="#" class="download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download 📥</a>
+                    <a href="#" class="btn download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download 📥</a>
+                    <button class="btn saveImg">Save</button>
                 </div>
             </div>
 

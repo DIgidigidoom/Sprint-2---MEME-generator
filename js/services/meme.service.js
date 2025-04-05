@@ -1,7 +1,9 @@
 'use strict'
 const IMG_STORAGE = 'imageDB'
+const IMG_SAVED_STORAGE = 'imageSavedDB'
 let gAvailableLines = [true, true, true]
 var gImgs = []
+var gSavedImgs = []
 
 
 
@@ -14,7 +16,7 @@ var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 function _createImages() {
 
     gImgs = loadFromStorage(IMG_STORAGE)
-
+    gSavedImgs = loadFromStorage(IMG_SAVED_STORAGE)
     if (!gImgs || !gImgs.length) {
         gImgs = [
             { id: 1, url: 'Images/1.jpg', keywords: ['funny', 'cat'] },
@@ -38,9 +40,22 @@ function _createImages() {
         ]
         saveToStorage(IMG_STORAGE, gImgs)
     }
+    if (!gSavedImgs || !gSavedImgs.length) {
+        gSavedImgs=[
+        { id: 1, url: 'Images/saved_1.jpg', keywords: ['funny', 'cat'] },
+        { id: 2, url: 'Images/saved_2.jpg', keywords: ['funny', 'cat'] },
+        { id: 3, url: 'Images/saved_3.jpg', keywords: ['funny', 'cat'] },
+        ]
+        saveToStorage(IMG_SAVED_STORAGE, gSavedImgs)
+    }
 }
 function getImgs() {
-    return gImgs
+    if(!gIsSavedImgs){
+        return gImgs
+    }else{
+        return gSavedImgs
+    }
+    
 }
 function getMeme() {
     return gMeme
@@ -78,7 +93,12 @@ function createImg() {
 }
 
 function getImgById(imgId) {
-    return gImgs.find(img => imgId === img.id)
+    if(!gIsSavedImgs){
+        return gImgs.find(img => imgId === img.id)
+    }else{
+        return gSavedImgs.find(img => imgId === img.id)
+    }
+    
 }
 function getMemeById(imgId) {
     debugger
