@@ -266,14 +266,14 @@ a:hover{
 
 }
 
-.download-btn {
+.download-btn,
+.saveImg-btn {
     padding: 10px 20px;
     background-color: blue;
     color: white;
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     text-decoration: none;
     font-family: poppins-regular;
 }

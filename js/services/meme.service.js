@@ -19,32 +19,32 @@ function _createImages() {
     gSavedImgs = loadFromStorage(IMG_SAVED_STORAGE)
     if (!gImgs || !gImgs.length) {
         gImgs = [
-            { id: 1, url: 'Images/1.jpg', keywords: ['funny', 'cat'] },
-            { id: 2, url: 'Images/2.jpg', keywords: ['funny', 'cat'] },
-            { id: 3, url: 'Images/3.jpg', keywords: ['funny', 'cat'] },
-            { id: 4, url: 'Images/4.jpg', keywords: ['funny', 'cat'] },
-            { id: 5, url: 'Images/5.jpg', keywords: ['funny', 'cat'] },
-            { id: 6, url: 'Images/6.jpg', keywords: ['funny', 'cat'] },
-            { id: 7, url: 'Images/7.jpg', keywords: ['funny', 'cat'] },
-            { id: 8, url: 'Images/8.jpg', keywords: ['funny', 'cat'] },
-            { id: 9, url: 'Images/9.jpg', keywords: ['funny', 'cat'] },
-            { id: 10, url: 'Images/10.jpg', keywords: ['funny', 'cat'] },
-            { id: 11, url: 'Images/11.jpg', keywords: ['funny', 'cat'] },
-            { id: 12, url: 'Images/12.jpg', keywords: ['funny', 'cat'] },
-            { id: 13, url: 'Images/13.jpg', keywords: ['funny', 'cat'] },
-            { id: 14, url: 'Images/14.jpg', keywords: ['funny', 'cat'] },
-            { id: 15, url: 'Images/15.jpg', keywords: ['funny', 'cat'] },
-            { id: 16, url: 'Images/16.jpg', keywords: ['funny', 'cat'] },
-            { id: 17, url: 'Images/17.jpg', keywords: ['funny', 'cat'] },
-            { id: 18, url: 'Images/18.jpg', keywords: ['funny', 'cat'] },
+            { id: 1, url: 'Images/1.jpg', keywords: ['hair', 'funny','evil','president','old'] },
+            { id: 2, url: 'Images/2.jpg', keywords: ['puppies','dog', 'puppies'] },
+            { id: 3, url: 'Images/3.jpg', keywords: ['cute','baby', 'dog'] },
+            { id: 4, url: 'Images/4.jpg', keywords: ['cute', 'cat'] },
+            { id: 5, url: 'Images/5.jpg', keywords: ['baby', 'Succsses','funny','cute'] },
+            { id: 6, url: 'Images/6.jpg', keywords: ['aliens', 'funny','hair','hands'] },
+            { id: 7, url: 'Images/7.jpg', keywords: ['funny', 'cute','baby'] },
+            { id: 8, url: 'Images/8.jpg', keywords: ['hair', 'funny','evil','actor'] },
+            { id: 9, url: 'Images/9.jpg', keywords: ['funny', 'baby','evil','laugh'] },
+            { id: 10, url: 'Images/10.jpg', keywords: ['laugh', 'president'] },
+            { id: 11, url: 'Images/11.jpg', keywords: ['funny', 'kissing'] },
+            { id: 12, url: 'Images/12.jpg', keywords: ['funny', 'old','hands','glasses'] },
+            { id: 13, url: 'Images/13.jpg', keywords: ['hands','actor'] },
+            { id: 14, url: 'Images/14.jpg', keywords: ['actor', 'glasses'] },
+            { id: 15, url: 'Images/15.jpg', keywords: ['actor', 'hands'] },
+            { id: 16, url: 'Images/16.jpg', keywords: ['actor', 'old','laugh'] },
+            { id: 17, url: 'Images/17.jpg', keywords: ['evil', 'hands','old'] },
+            { id: 18, url: 'Images/18.jpg', keywords: ['funny', 'hands'] },
         ]
         saveToStorage(IMG_STORAGE, gImgs)
     }
     if (!gSavedImgs || !gSavedImgs.length) {
         gSavedImgs = [
-            { id: 1, url: 'Images/saved_1.jpg', keywords: ['funny', 'cat'] },
-            { id: 2, url: 'Images/saved_2.jpg', keywords: ['funny', 'cat'] },
-            { id: 3, url: 'Images/saved_3.jpg', keywords: ['funny', 'cat'] },
+            { id: 1, url: 'Images/saved_1.jpg', keywords: ['hair', 'funny','evil','president','old'] },
+            { id: 2, url: 'Images/saved_2.jpg', keywords: ['cute','baby', 'dog'] },
+            { id: 3, url: 'Images/saved_3.jpg', keywords: ['funny', 'cute','baby'] },
         ]
         saveToStorage(IMG_SAVED_STORAGE, gSavedImgs)
     }
@@ -84,10 +84,11 @@ function resetMeme() {
 }
 
 function addImg(savedImg) {
+    debugger
     const newImg = {
         id: gSavedImgs.length + 1,
         url: savedImg,
-        keywords: ['funny', 'cat']
+        keywords: gImgs[gImgId-1].keywords
     }
     gSavedImgs.push(newImg)
     saveToStorage(IMG_SAVED_STORAGE, gSavedImgs)

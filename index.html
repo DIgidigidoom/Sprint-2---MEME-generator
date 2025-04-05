@@ -26,7 +26,7 @@
         </div>
         <div class="gallery-layout hide ">
             <div class="search-gallery-container">
-                <input class="srch-gallery" placeholder="Search" type="text">
+                <input class="srch-gallery" placeholder="Search" type="text" oninput="onFilterGallery(this.value)">
                 <div class="righSide-srch">
                     <div class="freq-search">
                         <h2>blah</h2>
@@ -84,8 +84,8 @@
                       </select>
                 </div>
                 <div class="share-row">
-                    <a href="#" class="btn download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download 📥</a>
-                    <button class="btn saveImg" onclick="onSaveImg()">Save</button>
+                    <a href="#" class="btn download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download <span class="fa-solid fa-download"></span></a>
+                    <button class="btn saveImg-btn" onclick="onSaveImg()">Save <span class="fa-solid fa-floppy-disk"></span></button>
                 </div>
             </div>
 

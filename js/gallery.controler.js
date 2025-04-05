@@ -7,20 +7,25 @@ function onInitGallery() {
     renderImgs()
 }
 
-function renderImgs() {
+function renderImgs(filteredImgs) {
     let strHTML = ''
-    if (!gIsSavedImgs) {
-        const imgs = getImgs()
-        strHTML = imgs.map(img =>
+    if (filteredImgs) {
+        strHTML = filteredImgs.map(img =>
             `<img src="${img.url}" id="${img.id}" onclick="onSelectImg(${img.id})">`
         )
     } else {
-        const imgs = getImgs()
-        strHTML = imgs.map(img =>
-            `<img src="${img.url}" id="${img.id}" onclick="onSelectImg(${img.id})">`
-        )
+        if (!gIsSavedImgs) {
+            const imgs = getImgs()
+            strHTML = imgs.map(img =>
+                `<img src="${img.url}" id="${img.id}" onclick="onSelectImg(${img.id})">`
+            )
+        } else {
+            const imgs = getImgs()
+            strHTML = imgs.map(img =>
+                `<img src="${img.url}" id="${img.id}" onclick="onSelectImg(${img.id})">`
+            )
+        }
     }
-
     document.querySelector('.gallery-container').innerHTML = strHTML.join('')
 }
 
@@ -35,7 +40,6 @@ function onOpenGallery(bool) {
 }
 
 
-
 function onSelectImg(imgId) {
     let elEditor = document.querySelector('.editor-container')
     let elGallery = document.querySelector('.gallery-layout')
@@ -44,7 +48,7 @@ function onSelectImg(imgId) {
 
     elEditor.classList.remove('hide')
     elGallery.classList.add('hide')
-    
+
     renderMeme(imgId)
 
 
@@ -64,4 +68,13 @@ function onRandomizeMeme() {
     elGallery.classList.add('hide')
     renderMeme(gImgId)
 
+}
+
+function onFilterGallery(filter) {
+    const imgs = getImgs()
+    const cleanFilter = filter.toLowerCase().trim();
+    let filteredImges = imgs.filter(img =>
+        img.keywords.some(kw => kw.includes(cleanFilter)))
+    
+    renderImgs(filteredImges)
 }
