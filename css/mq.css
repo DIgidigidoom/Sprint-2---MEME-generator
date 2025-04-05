@@ -133,8 +133,7 @@
     }
 
 
-    .gallery-layout {}
-
+   
     .freq-search {
         width: 90%;
         font-size: 0.6rem;
@@ -150,6 +149,10 @@
 
     .hamburger-btn {
         display: none;
+    }
+    .modal{
+        width: 90vw;
+        height: 40vh;
     }
 
 }
@@ -189,6 +192,10 @@
 
     .srch-gallery {
         width: 45%;
+    }
+    .modal{
+        width: 40vw;
+        height: 40vh;
     }
 
 }
