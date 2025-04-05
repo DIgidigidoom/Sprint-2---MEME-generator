@@ -138,19 +138,17 @@ function moveText(direction, lineIdx) {
     }
 }
 
-function dltLine(lineIdx){
+function dltLine(lineIdx) {
     gMeme.lines.splice(lineIdx, 1)
-    setAvailableLines(lineIdx,true)
     setLineIndex(0)
-    
+
 }
 
 function addLine() {
-    if (gMeme.lines.length > 2) return
-    
+
     const lineIdx = getLineIndex()
 
-    
+
 
     const newLine = {
         txt: 'Type Your Text Here',
@@ -168,16 +166,12 @@ function addLine() {
     }
 
     gMeme.lines.push(newLine)
-    toggleLineIndex()
-    // const memeLine = gMeme.lines[lineIdx]
-    // const x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
-    // const y = placeLines() - memeLine.size / 2;
-    // const txtWidth = gCtx.measureText(memeLine.txt).width
-    // const txtHeight = memeLine.size
+    
+
 
     setPos(getLineIndex())
-    // setPos(x, y, txtWidth, txtHeight, getLineIndex())
-    
+
+
 }
 
 function toggleLineIndex() {
@@ -201,7 +195,7 @@ function setPos(memeLineIdx) {
     const { gElCanvas, gCtx } = getCanvasPropeties()
     const memeLine = gMeme.lines[memeLineIdx]
     gMeme.lines[memeLineIdx].pos.x = (gElCanvas.width / 2) - gCtx.measureText(memeLine.txt).width / 2;
-    gMeme.lines[memeLineIdx].pos.y = placeLines() - memeLine.size / 2;
+    gMeme.lines[memeLineIdx].pos.y = placeLines(memeLineIdx) - memeLine.size / 2;
     gMeme.lines[memeLineIdx].pos.width = gCtx.measureText(memeLine.txt).width
     gMeme.lines[memeLineIdx].pos.height = memeLine.size
 }
@@ -215,9 +209,9 @@ function getPos(tempIdx) {
     }
     return pos
 }
-function getAvailableLines(){
+function getAvailableLines() {
     return gAvailableLines
 }
-function setAvailableLines(idx,bool){
+function setAvailableLines(idx, bool) {
     gAvailableLines[idx] = bool
 }

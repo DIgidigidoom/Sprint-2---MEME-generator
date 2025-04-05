@@ -3,7 +3,6 @@
 function onInitGallery() {
     _createImages()
     renderImgs()
-    resizeCanvas()
 }
 
 function renderImgs() {

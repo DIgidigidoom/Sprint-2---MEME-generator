@@ -8,13 +8,12 @@ var gImgId = 1
 function onInitEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    
-    _createImages()
+    addLine()
     onClearCanvas()
     resizeCanvas()
-    renderMeme(gImgId)
-    
-    onAddLine()
+    // renderMeme(gImgId)
+
+    // onAddLine()
     window.addEventListener('resize', resizeCanvas)
 
 }
@@ -33,9 +32,9 @@ function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.clientWidth
     gElCanvas.height = elContainer.clientHeight
-    
+     // setPos(getLineIndex())
     renderMeme(gImgId)
-    // setPos(getLineIndex())
+    
 }
 
 function drawImageOnCanvas(gImgId) {
@@ -61,7 +60,7 @@ function drawTxt() {
     let memeLineIdx = 0
 
     memeLines.forEach(memeLine => {
-
+        setPos(memeLineIdx)
         gCtx.beginPath()
         gCtx.font = `${memeLine.size}px ${memeLine.font}`
         gCtx.fillStyle = memeLine.color
@@ -69,7 +68,7 @@ function drawTxt() {
         gCtx.textBaseline = "middle"
         const { x, y, width, height } = getPos(memeLineIdx)
         gCtx.fillText(memeLine.txt, x + width / 2, y + height / 2)
-
+        
         memeLineIdx += 1
     })
 
@@ -87,19 +86,16 @@ function renderLineFocus() {
 
 }
 
-function placeLines() {
-    const AvailableLines = getAvailableLines()
-    const index = AvailableLines.findIndex(line => line === true)
-
-    switch (index) {
+function placeLines(lineIdx) {
+   
+    switch (lineIdx) {
         case 0:
-            setAvailableLines(index,false)
             return gElCanvas.height * 0.1
         case 1:
-            setAvailableLines(index,false)
+            
             return gElCanvas.height * 0.9
-        case 2:
-            setAvailableLines(index,false)
+        default:
+
             return gElCanvas.height / 2
 
     }
@@ -162,7 +158,7 @@ function onChangeFontSize(direction) {
 
 function onAddLine() {
     //Model
-
+    toggleLineIndex()
     addLine()
 
     //DOM 
@@ -226,6 +222,7 @@ function onMoveText(direction) {
 
 function onDltLine() {
     //Model
+    if (getMeme().lines.length === 0) return
     const lineIdx = getLineIndex()
     dltLine(lineIdx)
 
