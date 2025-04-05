@@ -96,10 +96,20 @@
                     <label>🥶<input type="radio" name="emoji" value="frozen" onchange="onEmojiSelected(this.value)"></label>
                 </div>
                 <div class="share-row">
+                    <!-- <div class="inputs"> -->
+                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
+                            <input name="img" id="imgData" type="hidden" />
+                            <button class="btn upload-btn" type="submit">Upload <span class="fa-solid fa-upload"></span></button>
+                        </form>
+                        <div class="modal-container" id="modal_container">
+                            <div class="modal">
+                            </div>
+                        </div>
                     <a href="#" class="btn download-btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download <span class="fa-solid fa-download"></span></a>
                     <button class="btn saveImg-btn" onclick="onSaveImg()">Save <span class="fa-solid fa-floppy-disk"></span></button>
-                </div>
+                <!-- </div> -->
             </div>
+            
 
         </div>
 
@@ -108,11 +118,13 @@
 
     <script src="js/meme.controler.js"></script>
     <script src="js/gallery.controler.js"></script>
+    <script src="js/upload.controler.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/services/utils.service.js"></script>
     <script src="https://kit.fontawesome.com/2e1a5f1033.js" crossorigin="anonymous"></script>
+    <script src="js/services/upload.service.js"></script>
 
 </body>
 

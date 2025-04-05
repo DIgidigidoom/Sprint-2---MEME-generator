@@ -125,3 +125,8 @@ body.menu-open .main-screen {
     color: white;
     border: 0.1px solid white;
 }
+
+.share-row{
+    display: flex;
+    gap: 10px;
+}
