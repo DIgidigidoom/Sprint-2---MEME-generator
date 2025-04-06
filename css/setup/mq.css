@@ -75,6 +75,7 @@
         background-color: rgba(72, 206, 141, 0.9);
         z-index: 5;
         transform: translateX(100%);
+        margin-inline-end: 0;
 
     }
 
@@ -176,7 +177,7 @@
     }
     .gallery-container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        height: 80vh;
+    
     }
 
     .search-gallery-container {

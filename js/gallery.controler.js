@@ -11,14 +11,17 @@ function onInitGallery() {
     })
     document.querySelector('.srch-gallery').addEventListener('change', function () {
         updateSearchCount(this.value)
-      })
-    
+    })
+
     _createImages()
     renderImgs()
     createPopularSrchs()
     sortSrchMap()
-    updateTopFiveSrchs()
     setDataList()
+    unSortSrchMap()
+    showTopFiveSrchs()
+
+
 }
 
 function renderImgs(filteredImgs) {
@@ -44,19 +47,27 @@ function renderImgs(filteredImgs) {
 }
 
 
-function updateTopFiveSrchs() {
+function showTopFiveSrchs() {
     let innerHTML = ''
     let idx = 1
     gTopFiveKeys.forEach(srch => {
         const elFreqSrch = document.querySelector(`.freq-srch-${idx}`)
-            innerHTML = srch[0]
-            elFreqSrch.innerHTML = innerHTML
-            elFreqSrch.style.fontSize = `${srch[1]*2}px`
+        innerHTML = srch[0]
+        elFreqSrch.innerHTML = innerHTML
+        elFreqSrch.style.fontSize = `${srch[1]*2}px`
         idx += 1
     });
-   
 }
-function setDataList(){
+function enlargeSrchedTxt(idx) {
+
+    const elFreqSrch = document.querySelector(`.freq-srch-${idx}`)
+    let currentSize = parseInt(elFreqSrch.style.fontSize) 
+    elFreqSrch.style.fontSize = (currentSize + 1) + 'px'
+    
+}
+
+
+function setDataList() {
     let idx = 1
     gTopFiveKeys.forEach(srch => {
         const elDataList = document.querySelector(`.data-list-${idx}`)
@@ -68,7 +79,7 @@ function setDataList(){
 
 ////////////////////////////////////////////onFunctions()////////////////////////////////////////////////
 
-function onChooseFreqSrch(idx){
+function onChooseFreqSrch(idx) {
     const txtPressed = document.querySelector(`.freq-srch-${idx}`).innerHTML
     document.querySelector('.srch-gallery').value = ''
     document.querySelector('.srch-gallery').value = txtPressed
@@ -124,3 +135,4 @@ function onFilterGallery(filter) {
 
     renderImgs(filteredImges)
 }
+
