@@ -14,9 +14,9 @@
 .main-container>* {
     grid-column: 2;
     place-items: center;
-    margin: 40px 0;
+    margin: 20px 0;
 }
-
+/* ///////////////////////////////////// HEADER ///////////////////////////////////////////////// */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -28,6 +28,20 @@
     display: flex;
 }
 
+.hamburger-btn {
+    margin-right: 30px;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: white;
+    border: 0.1px solid white;
+}
+
+body.menu-open .main-screen {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+/* ///////////////////////////////////// GALLERY ///////////////////////////////////////////////// */
 .gallery-layout {
     display: flex;
     flex-direction: column;
@@ -38,6 +52,8 @@
 
 }
 
+
+/* ////////////////////// Gallery Search ///////////////////////////// */
 .search-gallery-container {
     display: flex;
     justify-content: space-between;
@@ -59,7 +75,7 @@
 
 }
 
-
+/* //////////////////////////////////////// MEME EDITOR ///////////////////////////////////////////////// */
 .editor-container {
     display: flex;
     flex-direction: column;
@@ -73,10 +89,9 @@
     width: fit-content;
 
 }
-
+/* ////////////////////////////////// Paint options /////////////////// */
 .paint-options {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
     place-items: center;
     gap: 15px;
     padding: 10px;
@@ -98,11 +113,13 @@
     font-size: 2rem;
 }
 
-.hide {
-    z-index: -1;
-    display: none;
+.share-row{
+    display: flex;
+    gap: 10px;
 }
 
+
+/* //////////////////////////////////////// MISC ///////////////////////////////////////////////// */
 .main-screen {
     inset: 0;
     position: fixed;
@@ -113,20 +130,7 @@
     transition: opacity 0.5s;
 }
 
-body.menu-open .main-screen {
-    pointer-events: auto;
-    opacity: 1;
-}
-
-.hamburger-btn {
-    margin-right: 30px;
-    background-color: transparent;
-    font-size: 1.5rem;
-    color: white;
-    border: 0.1px solid white;
-}
-
-.share-row{
-    display: flex;
-    gap: 10px;
+.hide {
+    z-index: -1;
+    display: none;
 }

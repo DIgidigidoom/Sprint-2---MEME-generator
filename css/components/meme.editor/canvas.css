@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 2px 2px 2px 2px rgb(13, 1, 1);
 
 }
 
