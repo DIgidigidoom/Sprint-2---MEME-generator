@@ -43,6 +43,39 @@ function renderImgs(filteredImgs) {
     document.querySelector('.gallery-container').innerHTML = strHTML.join('')
 }
 
+
+function updateTopFiveSrchs() {
+    let innerHTML = ''
+    let idx = 1
+    gTopFiveKeys.forEach(srch => {
+        const elFreqSrch = document.querySelector(`.freq-srch-${idx}`)
+            innerHTML = srch[0]
+            elFreqSrch.innerHTML = innerHTML
+            elFreqSrch.style.fontSize = `${srch[1]*2}px`
+        idx += 1
+    });
+   
+}
+function setDataList(){
+    let idx = 1
+    gTopFiveKeys.forEach(srch => {
+        const elDataList = document.querySelector(`.data-list-${idx}`)
+        elDataList.value = srch[0]
+        idx += 1
+    });
+}
+
+
+////////////////////////////////////////////onFunctions()////////////////////////////////////////////////
+
+function onChooseFreqSrch(idx){
+    const txtPressed = document.querySelector(`.freq-srch-${idx}`).innerHTML
+    document.querySelector('.srch-gallery').value = ''
+    document.querySelector('.srch-gallery').value = txtPressed
+    updateSearchCount(txtPressed)
+    onFilterGallery(txtPressed)
+}
+
 function onOpenGallery(bool) {
     gIsSavedImgs = bool
     let elEditor = document.querySelector('.editor-container')
@@ -52,7 +85,6 @@ function onOpenGallery(bool) {
     elGallery.classList.remove('hide')
     renderImgs()
 }
-
 
 function onSelectImg(imgId) {
     let elEditor = document.querySelector('.editor-container')
@@ -91,33 +123,4 @@ function onFilterGallery(filter) {
         img.keywords.some(kw => kw.includes(cleanFilter)))
 
     renderImgs(filteredImges)
-}
-
-function updateTopFiveSrchs() {
-    let innerHTML = ''
-    let idx = 1
-    gTopFiveKeys.forEach(srch => {
-        const elFreqSrch = document.querySelector(`.freq-srch-${idx}`)
-            innerHTML = srch[0]
-            elFreqSrch.innerHTML = innerHTML
-            elFreqSrch.style.fontSize = `${srch[1]*2}px`
-        idx += 1
-    });
-   
-}
-function setDataList(){
-    let idx = 1
-    gTopFiveKeys.forEach(srch => {
-        const elDataList = document.querySelector(`.data-list-${idx}`)
-        elDataList.value = srch[0]
-        idx += 1
-    });
-}
-
-function onChooseFreqSrch(idx){
-    const txtPressed = document.querySelector(`.freq-srch-${idx}`).innerHTML
-    document.querySelector('.srch-gallery').value = ''
-    document.querySelector('.srch-gallery').value = txtPressed
-    updateSearchCount(txtPressed)
-    onFilterGallery(txtPressed)
 }

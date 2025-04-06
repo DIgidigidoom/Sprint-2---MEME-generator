@@ -15,6 +15,8 @@ function onInitEditor() {
     window.addEventListener('resize', resizeCanvas)
 
 }
+
+
 //////////////////////////////// Canvas //////////////////////////////////////////
 function renderMeme(imgId = 1) {
     gImgId = imgId
@@ -22,10 +24,6 @@ function renderMeme(imgId = 1) {
 
 }
 
-function onClearCanvas() {
-    gCtx.fillStyle = 'white'
-    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
-}
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.clientWidth
@@ -75,6 +73,22 @@ function drawTxt() {
 
 }
 
+function drawEmoji(ev, pos) {
+    const emojis = getEmojis()
+    const emoji = emojis.emoji
+    emoji.forEach(em => {
+        const x = em.pos.x
+        const y = em.pos.y
+        gCtx.beginPath()
+        gCtx.font = "40px Arial";
+        gCtx.textAlign = "center";
+        gCtx.textBaseline = "middle";
+
+        gCtx.fillText(em.type, x, y);
+    })
+    clearEmojiSelection()
+}
+
 function renderLineFocus() {
 
     const { x, y, width, height } = getPos()
@@ -99,6 +113,7 @@ function placeLines(lineIdx) {
 
     }
 }
+
 function onDown(ev) {
     const pos = getEvPos(ev)
     if (gEmojiMode) {
@@ -108,6 +123,7 @@ function onDown(ev) {
     onSelectTxt(ev, pos)
     renderMeme(gImgId)
 }
+
 function onSelectTxt(ev, pos) {
     // const pos = getEvPos(ev)
 
@@ -129,13 +145,91 @@ function onSelectTxt(ev, pos) {
 
 }
 
-/////////////////////////////// Editor Options ////////////////////////////////////
+function getCanvasPropeties() {
+    const canvasProperties = { gElCanvas, gCtx }
+    return canvasProperties
+}
+
+/////////////////////////////// EDITOR OPTIONS ////////////////////////////////////
 
 function onChangeText(editedTxt) {
 
     //Model
     const lineIdx = getLineIndex()
     setLineTxt(editedTxt, lineIdx)
+
+    //DOM
+    renderMeme(gImgId)
+}
+
+function renderInputTxtBox() {
+    const elTxtBox = document.querySelector('.txt-input')
+    const lineIdx = getLineIndex()
+    elTxtBox.value = getMeme().lines[lineIdx].txt
+}
+
+/////////// Line Edit Row /////////////////////////
+function onToggleLinesFocus() {
+
+    //model
+    toggleLineIndex()
+
+
+    //DOM
+    renderMeme(gImgId)
+
+
+}
+
+function onAddLine() {
+    //Model
+    toggleLineIndex()
+    addLine()
+    
+    //DOM 
+    renderMeme(gImgId)
+}
+
+function onDltLine() {
+    //Model
+    if (getMeme().lines.length === 0) return
+    const lineIdx = getLineIndex()
+    dltLine(lineIdx)
+
+    //DOM
+    renderMeme(gImgId)
+
+}
+
+function onClearCanvas() {
+    gCtx.fillStyle = 'white'
+    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+
+/////////// Text Edit Row /////////////////////////
+function onChangeFontSize(direction) {
+    //Model
+    const lineIdx = getLineIndex()
+    setLineSize(direction, lineIdx)
+
+    //DOM
+    renderMeme(gImgId)
+}
+
+function onTextAlign(txtAlign) {
+    //Model
+    const lineIdx = getLineIndex()
+    textAlign(txtAlign, lineIdx)
+
+    //DOM
+    renderMeme(gImgId)
+}
+
+function onMoveText(direction) {
+    //Model
+    const lineIdx = getLineIndex()
+    moveText(direction, lineIdx)
 
     //DOM
     renderMeme(gImgId)
@@ -150,24 +244,60 @@ function onSetColorFill(EditedColor) {
     renderMeme(gImgId)
 }
 
-function onChangeFontSize(direction) {
+function onFontSelect(newFont) {
     //Model
     const lineIdx = getLineIndex()
-    setLineSize(direction, lineIdx)
+    setTxtFont(newFont, lineIdx)
 
     //DOM
     renderMeme(gImgId)
 }
 
-function onAddLine() {
-    //Model
-    toggleLineIndex()
-    addLine()
-    
-    //DOM 
-    renderMeme(gImgId)
+function updateFontSelctor() {
+    const meme = getMeme()
+    const lineIdx = getLineIndex()
+    const font = meme.lines[lineIdx].font
+    const dropdown = document.getElementById("font-selctor");
+    dropdown.value = font;
 }
 
+/////////// Emojis /////////////////////////
+function onEmojiSelected(emoji) {
+    gEmojiMode = true
+    switch (emoji) {
+        case 'happy':
+            gEmoji = '😃'
+            break
+        case 'cool':
+            gEmoji = '😎'
+            break
+        case 'frozen':
+            gEmoji = '🥶'
+            break
+    }
+}
+
+function clearEmojiSelection() {
+    document.querySelectorAll('.emojis input[type="radio"]').forEach(radio => {
+        radio.checked = false
+    })
+    gEmojiMode = false
+}
+
+
+/////////// Share Options /////////////////////////
+function onDownloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+
+function onSaveImg() {
+    const canvasData = gElCanvas.toDataURL('image/jpeg')
+    addImg(canvasData)
+}
+
+
+////////////////////////////////////////Misc..////////////////////////////////////////////////////
 function getEvPos(ev) {
     const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
@@ -196,120 +326,6 @@ function getEvPos(ev) {
     }
     return pos
 }
-
-function onFontSelect(newFont) {
-    //Model
-    const lineIdx = getLineIndex()
-    setTxtFont(newFont, lineIdx)
-
-    //DOM
-    renderMeme(gImgId)
-}
-function onTextAlign(txtAlign) {
-    //Model
-    const lineIdx = getLineIndex()
-    textAlign(txtAlign, lineIdx)
-
-    //DOM
-    renderMeme(gImgId)
-}
-
-function onMoveText(direction) {
-    //Model
-    const lineIdx = getLineIndex()
-    moveText(direction, lineIdx)
-
-    //DOM
-    renderMeme(gImgId)
-}
-
-function onDltLine() {
-    //Model
-    if (getMeme().lines.length === 0) return
-    const lineIdx = getLineIndex()
-    dltLine(lineIdx)
-
-    //DOM
-    renderMeme(gImgId)
-
-}
-function updateFontSelctor() {
-    const meme = getMeme()
-    const lineIdx = getLineIndex()
-    const font = meme.lines[lineIdx].font
-    const dropdown = document.getElementById("font-selctor");
-    dropdown.value = font;
-}
-
-function onToggleLinesFocus() {
-
-    //model
-    toggleLineIndex()
-
-
-    //DOM
-    renderMeme(gImgId)
-
-
-}
-
-function renderInputTxtBox() {
-    const elTxtBox = document.querySelector('.txt-input')
-    const lineIdx = getLineIndex()
-    elTxtBox.value = getMeme().lines[lineIdx].txt
-}
-
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
-}
-
-
-function getCanvasPropeties() {
-    const canvasProperties = { gElCanvas, gCtx }
-    return canvasProperties
-}
-function onEmojiSelected(emoji) {
-    gEmojiMode = true
-    switch (emoji) {
-        case 'happy':
-            gEmoji = '😃'
-            break
-        case 'cool':
-            gEmoji = '😎'
-            break
-        case 'frozen':
-            gEmoji = '🥶'
-            break
-    }
-}
-
-function drawEmoji(ev, pos) {
-    const emojis = getEmojis()
-    const emoji = emojis.emoji
-    emoji.forEach(em => {
-        const x = em.pos.x
-        const y = em.pos.y
-        gCtx.beginPath()
-        gCtx.font = "40px Arial";
-        gCtx.textAlign = "center";
-        gCtx.textBaseline = "middle";
-
-        gCtx.fillText(em.type, x, y);
-    })
-    clearEmojiSelection()
-}
-
-function clearEmojiSelection() {
-    document.querySelectorAll('.emojis input[type="radio"]').forEach(radio => {
-        radio.checked = false
-    })
-    gEmojiMode = false
-}
-function onDownloadImg(elLink) {
-    const imgContent = gElCanvas.toDataURL('image/jpeg')
-    elLink.href = imgContent
-}
-function onSaveImg() {
-    const canvasData = gElCanvas.toDataURL('image/jpeg')
-    addImg(canvasData)
 }
