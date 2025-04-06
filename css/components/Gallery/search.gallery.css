@@ -1,0 +1,28 @@
+.srch-gallery {
+    height: 60px;
+    border-radius: 500px;
+    background-color: rgba(33.999481201171875, 37.003326416015625, 43.99932861328125, 1);
+    font-family: poppins-light;
+    font-size: 1.3125rem;
+    color: rgba(255, 255, 255, 0.743);
+    padding-left: 40px;
+    width: 90%;
+}
+
+.righSide-srch {
+    display: flex;
+    place-items: center;
+    justify-content: space-evenly;
+    gap: 30px;
+    width: 90%;
+}
+
+.freq-search {
+    background-color: gray;
+    border-radius: 500px;
+    height: 60px;
+    font-family: poppins-light;
+    color: rgba(255, 255, 255, 0.743);
+    box-shadow: 2px 2px 2px 2px rgb(13, 1, 1);
+
+}

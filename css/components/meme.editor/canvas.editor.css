@@ -1,0 +1,54 @@
+.paint-options {
+    overflow: auto;
+    background-color: rgb(66, 75, 75);
+    border-radius: 20px;
+    border: 5px solid rgb(64, 64, 64);
+    text-align: center;
+}
+
+
+.txt-input {
+    width: 80%;
+    height: fit-content;
+    border-radius: 100px;
+    text-align: center;
+    font-family: poppins-regular;
+    font-size: 1.6rem;
+    padding: 15px;
+}
+
+.line-edit-row .btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin: auto 5px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.text-edit-row {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+    flex-flow: wrap;
+}
+
+.text-edit-row>* {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+
+    border: none;
+    cursor: pointer;
+    background-color: #f2f7f4;
+}
+
+#font-selctor {
+    grid-column: 4/6;
+    width: unset;
+    font-size: 1.2rem;
+
+}

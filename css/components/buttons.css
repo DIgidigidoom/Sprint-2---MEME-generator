@@ -1,0 +1,106 @@
+
+
+/* ////////////////////////////////////General Buttons style//////////////////////// */
+.btn:hover,
+a:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+/* //////////////////////////////////////Gallery Buttons////////////////////////////////// */
+.more-btn {
+    width: fit-content;
+    height: 40px;
+    border-radius: 100px;
+    background: linear-gradient(to right, #3d92b9, #37cd84);
+    font-family: poppins-light;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.743);
+    box-shadow: 2px 2px 2px 2px rgb(13, 1, 1);
+    padding: 0 15px;
+}
+
+
+
+/* //////////////////////////////////////////Paint Options//////////////////////////////////////// */
+               
+/* ////////////////////////////Line Options////////////////////////// */
+.toggle-line-btn {
+    background-color: rgb(89, 173, 226);
+    box-shadow: inset 5px 5px 0px rgba(159, 225, 245, 0.775);
+    filter: drop-shadow(0px 5px 1px rgb(55, 120, 160));
+    font-size: 1.6rem;
+}
+
+.add-btn {
+    background-color: rgb(103, 226, 89);
+    box-shadow: inset 5px 5px 0px rgba(159, 255, 149, 0.775);
+    filter: drop-shadow(0px 5px 1px rgb(61, 167, 49));
+    font-size: 1.6rem;
+}
+
+.dlt-line-btn {
+    background-color: rgb(225, 85, 70);
+    box-shadow: inset 5px 5px 0px rgba(235, 108, 94, 0.775);
+    filter: drop-shadow(0px 5px 1px rgb(168, 57, 45));
+    font-size: 1.6rem;
+}
+
+.clr-btn {
+    background-color: rgb(225, 147, 70);
+    box-shadow: inset 5px 5px 0px rgba(234, 161, 89, 0.775);
+    filter: drop-shadow(0px 5px 1px rgb(164, 105, 46));
+    font-size: 1.6rem;
+}
+
+
+/* ////////////////////////////Text Edit////////////////////////// */
+.color-pallete {
+    width: 0;
+
+}
+
+.font-size-btn {
+    font-size: 1.6rem;
+
+}
+
+
+.pallete-div {
+    display: flex;
+    text-align: center;
+}
+
+
+
+.pallete-icon {
+    display: flex;
+
+
+}
+
+.pallete-icon span {
+
+    width: 60px;
+    height: 100%;
+    font-size: 2.9rem;
+
+}
+
+
+/* ////////////////////////////Sahre Buttons////////////////////////// */
+.download-btn,
+.saveImg-btn,
+.upload-btn,
+.btn-facebook,
+.close-modal-btn {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: poppins-regular;
+}

@@ -1,0 +1,24 @@
+.main-header {
+    background: linear-gradient(to right, #3d92b9, #37cd84);
+    height: fit-content;
+    border-radius: 500px;
+}
+
+.logo {
+    margin: 30px 0 30px 10%;
+    font-family: poppins-regular;
+    font-size: 1.3125rem;
+    color: white;
+}
+
+.main-nav {
+    font-family: poppins-regular;
+    font-size: 1.35rem;
+
+}
+
+.main-nav>* {
+    text-decoration: none;
+    margin: auto 60px;
+    color: white;
+}
