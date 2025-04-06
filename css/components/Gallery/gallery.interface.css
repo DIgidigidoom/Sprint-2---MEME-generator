@@ -2,11 +2,11 @@
     background-color: rgb(48, 47, 47);
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 5px 5px 5px 5px rgb(13, 1, 1);
+    box-shadow: 3px 3px 3px 3px rgb(13, 1, 1);
 }
 .gallery-container img {
     border-radius: 10px;
     width: 100%;
     height: 100%;
-    box-shadow: 5px 5px 5px 5px rgb(13, 1, 1);
+    box-shadow: 1px 1px 1px 1px rgb(13, 1, 1);
 }

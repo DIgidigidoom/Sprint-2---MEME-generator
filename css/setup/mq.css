@@ -165,6 +165,7 @@
 
     .gallery-container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: 80vh;
     }
 
     .search-gallery-container {
@@ -179,8 +180,6 @@
         width: 50vmin;
         height: 44vmin;
     }
-
-
 
     .righSide-srch {
         width: 55%;
