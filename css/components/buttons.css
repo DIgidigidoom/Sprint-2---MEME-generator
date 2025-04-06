@@ -1,6 +1,6 @@
 
 
-/* ////////////////////////////////////General Buttons style//////////////////////// */
+/* //////////////////////////////////// GENERAL BUTTONS STYLE //////////////////////// */
 .btn:hover,
 a:hover {
     transform: scale(1.1);
@@ -8,7 +8,7 @@ a:hover {
 }
 
 
-/* //////////////////////////////////////Gallery Buttons////////////////////////////////// */
+/* ////////////////////////////////////// GALLERY BUTTONS ////////////////////////////////// */
 .more-btn {
     width: fit-content;
     height: 40px;
@@ -23,35 +23,35 @@ a:hover {
 
 
 
-/* //////////////////////////////////////////Paint Options//////////////////////////////////////// */
+/* ////////////////////////////////////////// PAINT OPTIONS //////////////////////////////////////// */
                
 /* ////////////////////////////Line Options////////////////////////// */
 .toggle-line-btn {
     background-color: rgb(89, 173, 226);
     box-shadow: inset 5px 5px 0px rgba(159, 225, 245, 0.775);
     filter: drop-shadow(0px 5px 1px rgb(55, 120, 160));
-    font-size: 1.6rem;
+    font-size: 2em;
 }
 
 .add-btn {
     background-color: rgb(103, 226, 89);
     box-shadow: inset 5px 5px 0px rgba(159, 255, 149, 0.775);
     filter: drop-shadow(0px 5px 1px rgb(61, 167, 49));
-    font-size: 1.6rem;
+    font-size: 1.6em;
 }
 
 .dlt-line-btn {
     background-color: rgb(225, 85, 70);
     box-shadow: inset 5px 5px 0px rgba(235, 108, 94, 0.775);
     filter: drop-shadow(0px 5px 1px rgb(168, 57, 45));
-    font-size: 1.6rem;
+    font-size: 1.6em;
 }
 
 .clr-btn {
     background-color: rgb(225, 147, 70);
     box-shadow: inset 5px 5px 0px rgba(234, 161, 89, 0.775);
     filter: drop-shadow(0px 5px 1px rgb(164, 105, 46));
-    font-size: 1.6rem;
+    font-size: 1.6em;
 }
 
 
@@ -96,7 +96,8 @@ a:hover {
 .btn-facebook,
 .close-modal-btn {
     padding: 10px 20px;
-    background-color: blue;
+    background: linear-gradient(to right, #3d92b9, #37cd84);
+    box-shadow: 0.1px 0.1px 0.1px 0.1px black;
     color: white;
     font-size: 16px;
     border: none;
